@@ -1,0 +1,35 @@
+###############################################################################
+# THE HOME ASSISTANT CONFIGURATION FILE - MOTHER OF ALL CONFIG FILES
+###############################################################################
+
+# Core Configuration. Do not remove.
+homeassistant:
+  name: Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  elevation: 0
+  unit_system: imperial
+  temperature_unit: F
+  time_zone: America/New_York
+  currency: USD
+  internal_url: http://homeassistant.local:8123
+  external_url: !secret external_url
+
+default_config:
+frontend:
+  themes: !include_dir_merge_named themes
+
+wake_on_lan:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Managed via UI
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+ios: !include ios.yaml
+
+# Others
+sensor: !include sensors.yaml

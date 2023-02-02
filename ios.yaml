@@ -1,0 +1,33 @@
+actions:
+  - name: SetupOffice
+    background_color: "#000000"
+    label:
+      text: "Setup Office"
+      color: "#ff0000"
+    icon:
+      icon: office-chair
+      color: "#ffffff"
+  - name: TurnOnLivingRoomTv
+    background_color: "#000000"
+    label:
+      text: "Turn On Tv"
+      color: "#ff0000"
+    icon:
+      icon: tv
+      color: "#ffffff"
+  - name: TurnOffKidRoom
+    background_color: "#000000"
+    label:
+      text: "Turn Off All Devices at Kids Room"
+      color: "#ff0000"
+    icon:
+      icon: child-toy
+      color: "#ffffff"
+  - name: BedTime
+    background_color: "#000000"
+    label:
+      text: "Prepare Home for Bedtime"
+      color: "#ff0000"
+    icon:
+      icon: bed-time
+      color: "#ffffff"
