@@ -42,7 +42,7 @@
     path: cvroque/webostv_turn_on.yaml
     input:
       webostv: media_player.lg_webos_smart_tv
-      webostv_mac: 64:cb:e9:ad:49:8a
+      webostv_mac: !secret lg_oled77c1pub_mac
       on_action:
       - type: turn_on
         device_id: 71f5e63d2e1300c044ae37d0e248ece3
@@ -72,19 +72,17 @@
   condition: []
   action:
   - service: media_player.turn_off
-    data: {}
     target:
-      entity_id:
-      - media_player.tv_samsung_5_series_40
-      - media_player.fire_tv_192_168_11_60
+      entity_id: media_player.fire_tv_192_168_11_60
   - service: light.turn_off
-    data: {}
     target:
       entity_id: light.maxi_room_switch
   - service: fan.turn_off
-    data: {}
     target:
       entity_id: fan.maxi_room_switch
+  - service: switch.turn_off
+    target:
+      entity_id: switch.maxi_tv_plug
   mode: single
 - id: '1675354961466'
   alias: Bed Time
@@ -100,26 +98,17 @@
     data:
       percentage: 100
     target:
-      entity_id:
-      - fan.master_bedroom_switch
-      - fan.maxi_room_switch
+      entity_id: fan.bedroom_fans
+  - service: fan.turn_off
+    target:
+      entity_id: fan.office_switch
   - service: light.turn_off
-    data: {}
     target:
-      entity_id:
-      - light.master_bedroom_switch
-      - light.living_room_switch
-      - light.office_switch
-      - light.rgbic_tv_backlight
+      entity_id: light.all_home_lights
   - service: switch.turn_off
-    data: {}
     target:
-      entity_id:
-      - switch.garage_motion_switch_ks200m
-      - switch.laundry_motion_switch_ks200m
-      - switch.porch_lights_hs200
+      entity_id: switch.all_home_switches
   - service: climate.turn_on
-    data: {}
     target:
       entity_id: climate.home
   - service: climate.set_hvac_mode

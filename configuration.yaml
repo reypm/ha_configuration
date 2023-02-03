@@ -33,3 +33,7 @@ ios: !include ios.yaml
 
 # Others
 sensor: !include sensors.yaml
+
+# Logger
+logger:
+  default: info
