@@ -2,129 +2,154 @@
   alias: Backup Home Assistant every night at 12 AM
   description: ''
   trigger:
-  - platform: time
-    at: '12:00:00'
-  condition: []
+    - platform: time
+      at: '12:00:00'
+  condition: [ ]
   action:
-  - service: hassio.backup_full
-    data:
-      compressed: true
+    - service: hassio.backup_full
+      data:
+        compressed: true
   mode: single
 - id: '1675273174326'
   alias: Setup Office For Work
   description: Get Office Ready for Work
   trigger:
-  - platform: event
-    event_type: ios.action_fired
-    event_data:
-      actionName: SetupOffice
-  condition: []
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: SetupOffice
+  condition: [ ]
   action:
-  - service: fan.turn_on
-    data:
-      percentage: 100
-    target:
-      entity_id: fan.office_switch
-  - service: light.turn_on
-    entity_id: light.office_switch
+    - service: fan.turn_on
+      data:
+        percentage: 100
+      target:
+        entity_id: fan.office_switch
+    - service: light.turn_on
+      entity_id: light.office_switch
   mode: single
   initial_state: true
 - id: '1675296737776'
   alias: LG webOS Smart TV - Turn On Action
   description: Get Living Room Ready for Watch Movies
   trigger:
-  - platform: event
-    event_type: ios.action_fired
-    event_data:
-      actionName: TurnOnLivingRoomTv
-  condition: []
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: TurnOnLivingRoomTv
+  condition: [ ]
   use_blueprint:
     path: cvroque/webostv_turn_on.yaml
     input:
       webostv: media_player.lg_webos_smart_tv
-      webostv_mac: !secret lg_oled77c1pub_mac
+      webostv_mac: 64:cb:e9:ad:49:8a
       on_action:
-      - type: turn_on
-        device_id: 71f5e63d2e1300c044ae37d0e248ece3
-        entity_id: light.rgbic_tv_backlight
-        domain: light
-      - service: media_player.turn_on
-        data: {}
-        target:
-          device_id: dec685bea5d01d67d0d431f8b35cfa43
-      - service: webostv.select_sound_output
-        data:
-          entity_id: media_player.lg_webos_smart_tv
-          sound_output: external_arc
-      - service: media_player.select_source
-        data:
-          source: Apple OTT
-        target:
-          device_id: 41d41c8d5c3675a9851458d0127fb9b5
+        - type: turn_on
+          device_id: 71f5e63d2e1300c044ae37d0e248ece3
+          entity_id: light.rgbic_tv_backlight
+          domain: light
+        - service: media_player.turn_on
+          data: { }
+          target:
+            device_id: dec685bea5d01d67d0d431f8b35cfa43
+        - service: webostv.select_sound_output
+          data:
+            entity_id: media_player.lg_webos_smart_tv
+            sound_output: external_arc
+        - service: media_player.select_source
+          data:
+            source: Apple OTT
+          target:
+            device_id: 41d41c8d5c3675a9851458d0127fb9b5
 - id: '1675354408045'
   alias: Turn Off Kid Bedroom Devices
   description: ''
   trigger:
-  - platform: event
-    event_type: ios.action_fired
-    event_data:
-      actionName: TurnOffKidRoom
-  condition: []
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: TurnOffKidRoom
+  condition: [ ]
   action:
-  - service: media_player.turn_off
-    target:
-      entity_id: media_player.fire_tv_192_168_11_60
-  - service: light.turn_off
-    target:
-      entity_id: light.maxi_room_switch
-  - service: fan.turn_off
-    target:
-      entity_id: fan.maxi_room_switch
-  - service: switch.turn_off
-    target:
-      entity_id: switch.maxi_tv_plug
+    - service: media_player.turn_off
+      target:
+        entity_id: media_player.fire_tv_192_168_11_60
+    - service: light.turn_off
+      target:
+        entity_id: light.maxi_room_switch
+    - service: fan.turn_off
+      target:
+        entity_id: fan.maxi_room_switch
+    - service: switch.turn_off
+      target:
+        entity_id: switch.maxi_tv_plug
   mode: single
 - id: '1675354961466'
   alias: Bed Time
   description: ''
   trigger:
-  - platform: event
-    event_type: ios.action_fired
-    event_data:
-      actionName: BedTime
-  condition: []
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: BedTime
+  condition: [ ]
   action:
-  - service: fan.turn_on
-    data:
-      percentage: 100
-    target:
-      entity_id: fan.bedroom_fans
-  - service: fan.turn_off
-    target:
-      entity_id: fan.office_switch
-  - service: light.turn_off
-    target:
-      entity_id: light.all_home_lights
-  - service: switch.turn_off
-    target:
-      entity_id: switch.all_home_switches
-  - service: climate.turn_on
-    target:
-      entity_id: climate.home
-  - service: climate.set_hvac_mode
-    data:
-      hvac_mode: cool
-    target:
-      entity_id: climate.home
-  - service: climate.set_fan_mode
-    data:
-      fan_mode: auto
-    target:
-      entity_id: climate.home
-  - service: climate.set_temperature
-    data:
-      hvac_mode: cool
-      temperature: 70
-    target:
-      entity_id: climate.home
+    - service: fan.turn_off
+      target:
+        entity_id: fan.office_switch
+    - service: light.turn_off
+      target:
+        entity_id: light.all_home_lights
+    - service: switch.turn_off
+      target:
+        entity_id: switch.all_home_switches
+    - service: fan.turn_on
+      data:
+        percentage: 100
+      target:
+        entity_id:
+          - fan.master_bedroom_switch
+          - fan.maxi_room_switch
+    - service: climate.turn_on
+      target:
+        entity_id: climate.home
+    - service: climate.set_hvac_mode
+      data:
+        hvac_mode: cool
+      target:
+        entity_id: climate.home
+    - service: climate.set_fan_mode
+      data:
+        fan_mode: auto
+      target:
+        entity_id: climate.home
+    - service: climate.set_temperature
+      data:
+        hvac_mode: cool
+        temperature: 70
+      target:
+        entity_id: climate.home
+  mode: single
+- id: '1675703001663'
+  alias: Turn off HVAC
+  description: ''
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: WakeUpTime
+    - platform: time
+      at: 07:30:00
+  condition: [ ]
+  action:
+    - service: climate.set_fan_mode
+      data:
+        fan_mode: 'off'
+      target:
+        entity_id: climate.home
+    - service: climate.set_hvac_mode
+      data:
+        hvac_mode: 'off'
+      target:
+        entity_id: climate.home
   mode: single
