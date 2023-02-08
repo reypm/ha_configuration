@@ -1,37 +1,37 @@
 actions:
-  - name: SetupOffice
+  - name: WorkTime
     background_color: "#000000"
     label:
-      text: "Setup Office"
+      text: "Turn on the Office Light and Fan"
       color: "#ff0000"
     icon:
-      icon: mdi:chair-rolling
+      icon: mdi:battery-high
       color: "#ffffff"
-  - name: TurnOnLivingRoomTv
+  - name: WorkDone
     background_color: "#000000"
     label:
-      text: "Turn On Tv"
+      text: "Turn off the Office Light and Fan"
       color: "#ff0000"
     icon:
-      icon: mdi:television
+      icon: mdi:battery-low
       color: "#ffffff"
-  - name: TurnOffKidRoom
+  - name: MovieTime
     background_color: "#000000"
     label:
-      text: "Turn Off All Devices at Kids Room"
+      text: "Setup Living Room for Movies time"
       color: "#ff0000"
     icon:
-      icon: mdi:teddy-bear
+      icon: mdi:youtube-tv
       color: "#ffffff"
-  - name: BedTime
+  - name: HvacOn
     background_color: "#000000"
     label:
-      text: "Prepare Home for Bedtime"
+      text: "Turn On HVAC"
       color: "#ff0000"
     icon:
-      icon: mdi:bed
+      icon: mdi:hvac
       color: "#ffffff"
-  - name: WakeUpTime
+  - name: HvacOff
     background_color: "#000000"
     label:
       text: "Turn Off HVAC"
@@ -39,3 +39,20 @@ actions:
     icon:
       icon: mdi:hvac-off
       color: "#ffffff"
+  - name: KidBedTime
+    background_color: "#000000"
+    label:
+      text: "Turn Off All Devices at Kids Room"
+      color: "#ff0000"
+    icon:
+      icon: mdi:devices
+      color: "#ffffff"
+  - name: HomeBedTime
+    background_color: "#000000"
+    label:
+      text: "Prepare Home for Bedtime"
+      color: "#ff0000"
+    icon:
+      icon: mdi:power-sleep
+      color: "#ffffff"
+

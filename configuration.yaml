@@ -36,4 +36,7 @@ sensor: !include sensors.yaml
 
 # Logger
 logger:
-  default: info
+  default: warning
+  logs:
+    custom_components.localtuya: debug
+    custom_components.localtuya.pytuya: debug

@@ -17,16 +17,19 @@
     - platform: event
       event_type: ios.action_fired
       event_data:
-        actionName: SetupOffice
+        actionName: WorkTime
   condition: [ ]
   action:
     - service: fan.turn_on
       data:
         percentage: 100
       target:
-        entity_id: fan.office_switch
+        entity_id: fan.office_fan
     - service: light.turn_on
-      entity_id: light.office_switch
+      data:
+        brightness_step_pct: 100
+      target:
+        entity_id: light.office_light
   mode: single
   initial_state: true
 - id: '1675296737776'
@@ -36,7 +39,7 @@
     - platform: event
       event_type: ios.action_fired
       event_data:
-        actionName: TurnOnLivingRoomTv
+        actionName: MovieTime
   condition: [ ]
   use_blueprint:
     path: cvroque/webostv_turn_on.yaml
@@ -68,21 +71,21 @@
     - platform: event
       event_type: ios.action_fired
       event_data:
-        actionName: TurnOffKidRoom
+        actionName: KidBedTime
   condition: [ ]
   action:
-    - service: media_player.turn_off
-      target:
-        entity_id: media_player.fire_tv_192_168_11_60
     - service: light.turn_off
+      data: { }
       target:
-        entity_id: light.maxi_room_switch
+        entity_id: light.kid_bedroom_light
     - service: fan.turn_off
+      data: { }
       target:
-        entity_id: fan.maxi_room_switch
+        entity_id: fan.kid_bedroom_fan
     - service: switch.turn_off
       target:
         entity_id: switch.maxi_tv_plug
+      data: { }
   mode: single
 - id: '1675354961466'
   alias: Bed Time
@@ -91,28 +94,34 @@
     - platform: event
       event_type: ios.action_fired
       event_data:
-        actionName: BedTime
+        actionName: HomeBedTime
   condition: [ ]
   action:
     - service: fan.turn_off
+      data: { }
       target:
-        entity_id: fan.office_switch
+        entity_id:
+          - fan.office_fan
+          - fan.living_room_fan
     - service: light.turn_off
+      data: { }
       target:
-        entity_id: light.all_home_lights
+        entity_id: light.homelightsexceptkid
     - service: switch.turn_off
+      data: { }
       target:
-        entity_id: switch.all_home_switches
+        entity_id: switch.homeswitchesexceptoutside
     - service: fan.turn_on
       data:
         percentage: 100
       target:
         entity_id:
-          - fan.master_bedroom_switch
-          - fan.maxi_room_switch
+          - fan.kid_bedroom_fan
+          - fan.master_bedroom_fan
     - service: climate.turn_on
       target:
         entity_id: climate.home
+      data: { }
     - service: climate.set_hvac_mode
       data:
         hvac_mode: cool
@@ -137,7 +146,7 @@
     - platform: event
       event_type: ios.action_fired
       event_data:
-        actionName: WakeUpTime
+        actionName: HvacOff
     - platform: time
       at: 07:30:00
   condition: [ ]
@@ -152,4 +161,59 @@
         hvac_mode: 'off'
       target:
         entity_id: climate.home
+  mode: single
+- id: '1675884634266'
+  alias: HvacOn
+  description: Turn On HVAC at 70 degrees
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: HvacOn
+    - platform: time
+      at: '22:30:00'
+  condition:
+    - condition: state
+      entity_id: climate.home
+      attribute: climate_mode
+      state: 'off'
+  action:
+    - service: climate.turn_on
+      data: { }
+      target:
+        entity_id: climate.home
+    - service: climate.set_hvac_mode
+      data:
+        hvac_mode: cool
+      target:
+        entity_id: climate.home
+    - service: climate.set_fan_mode
+      data:
+        fan_mode: auto
+      target:
+        entity_id: climate.home
+    - service: climate.set_temperature
+      data:
+        temperature: 69.9
+      target:
+        entity_id: climate.home
+  mode: single
+- id: '1675885054395'
+  alias: Work Done
+  description: Turn Off Office Devices
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: WorkDone
+  condition: [ ]
+  action:
+    - service: fan.turn_off
+      data: { }
+      target:
+        entity_id: fan.office_fan
+    - service: light.turn_off
+      data: { }
+      target:
+        entity_id: light.office_light
   mode: single
