@@ -10,28 +10,6 @@
       data:
         compressed: true
   mode: single
-- id: '1675273174326'
-  alias: Setup Office For Work
-  description: Get Office Ready for Work
-  trigger:
-    - platform: event
-      event_type: ios.action_fired
-      event_data:
-        actionName: WorkTime
-  condition: [ ]
-  action:
-    - service: fan.turn_on
-      data:
-        percentage: 100
-      target:
-        entity_id: fan.office_fan
-    - service: light.turn_on
-      data:
-        brightness_step_pct: 100
-      target:
-        entity_id: light.office_light
-  mode: single
-  initial_state: true
 - id: '1675296737776'
   alias: LG webOS Smart TV - Turn On Action
   description: Get Living Room Ready for Watch Movies
@@ -149,7 +127,9 @@
         actionName: HvacOff
     - platform: time
       at: 07:30:00
-  condition: [ ]
+  condition:
+    - condition: template
+      value_template: '{{ state_attr(''climate.home'', ''state'') == ''on'' }}'
   action:
     - service: climate.set_fan_mode
       data:
@@ -163,8 +143,8 @@
         entity_id: climate.home
   mode: single
 - id: '1675884634266'
-  alias: HvacOn
-  description: Turn On HVAC at 70 degrees
+  alias: Turn HVAC On
+  description: ''
   trigger:
     - platform: event
       event_type: ios.action_fired
@@ -173,13 +153,11 @@
     - platform: time
       at: '22:30:00'
   condition:
-    - condition: state
-      entity_id: climate.home
-      attribute: climate_mode
-      state: 'off'
+    - condition: template
+      value_template: '{{ state_attr(''climate.home'', ''state'') == ''off'' or state_attr(''weather.home'',
+      ''temperature'') >=76 }}'
   action:
     - service: climate.turn_on
-      data: { }
       target:
         entity_id: climate.home
     - service: climate.set_hvac_mode
@@ -194,26 +172,103 @@
         entity_id: climate.home
     - service: climate.set_temperature
       data:
-        temperature: 69.9
+        temperature: 72
       target:
         entity_id: climate.home
   mode: single
-- id: '1675885054395'
-  alias: Work Done
-  description: Turn Off Office Devices
+- id: '1676330625685'
+  alias: Set Bedroom Movie Time
+  description: ''
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: BedroomMovieTime
+  use_blueprint:
+    path: cvroque/webostv_turn_on.yaml
+    input:
+      webostv: media_player.lg_webos_smart_tv_2
+      webostv_mac: ac:5a:f0:3c:e3:e8
+      on_action:
+        - service: webostv.select_sound_output
+          data:
+            entity_id: media_player.lg_webos_smart_tv_2
+            sound_output: external_optical
+        - service: media_player.select_source
+          data:
+            source: Apple OTT
+          target:
+            entity_id: media_player.lg_webos_smart_tv_2
+        - service: fan.turn_on
+          data:
+            percentage: 100
+          target:
+            entity_id: fan.master_bedroom_fan
+        - service: light.turn_off
+          data: { }
+          target:
+            entity_id: light.master_bedroom_light
+- id: '1676394605387'
+  alias: Setup Office for Work
+  description: ''
+  trigger:
+    - platform: event
+      event_type: ios.action_fired
+      event_data:
+        actionName: WorkTime
+  condition: [ ]
+  action:
+    - if:
+        - condition: state
+          entity_id: fan.office_fan
+          state: "off"
+        - condition: state
+          entity_id: climate.home
+          state: 'off'
+        - condition: numeric_state
+          entity_id: weather.home
+          attribute: temperature
+          above: 75
+      then:
+        - service: fan.turn_on
+          data:
+            percentage: 100
+          target:
+            entity_id: fan.office_fan
+    - if:
+        - condition: state
+          entity_id: light.office_light
+          state: 'off'
+      then:
+        - service: light.turn_on
+          target:
+            entity_id: light.office_light
+  mode: single
+- id: '1676394856684'
+  alias: Work  Done
+  description: ''
   trigger:
     - platform: event
       event_type: ios.action_fired
       event_data:
         actionName: WorkDone
-  condition: [ ]
+  condition: []
   action:
-    - service: fan.turn_off
-      data: { }
-      target:
-        entity_id: fan.office_fan
-    - service: light.turn_off
-      data: { }
-      target:
-        entity_id: light.office_light
+    - if:
+        - condition: state
+          entity_id: fan.office_fan
+          state: "on"
+      then:
+        - service: fan.turn_off
+          data: {}
+          target:
+            entity_id: fan.office_fan
+    - if:
+        - condition: state
+          entity_id: light.office_light
+          state: 'on'
+      then:
+        - service: light.turn_off
+          target:
+            entity_id: light.office_light
   mode: single

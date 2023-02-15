@@ -18,7 +18,15 @@ actions:
   - name: MovieTime
     background_color: "#000000"
     label:
-      text: "Setup Living Room for Movies time"
+      text: "Living Room for Movies time"
+      color: "#ff0000"
+    icon:
+      icon: mdi:movie-play
+      color: "#ffffff"
+  - name: BedroomMovieTime
+    background_color: "#000000"
+    label:
+      text: "Bedroom Movies time"
       color: "#ff0000"
     icon:
       icon: mdi:youtube-tv
