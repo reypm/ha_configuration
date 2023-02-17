@@ -1,35 +1,19 @@
 actions:
-  - name: WorkTime
+  - name: StartWorkDay
     background_color: "#000000"
     label:
-      text: "Turn on the Office Light and Fan"
+      text: "Start Work"
       color: "#ff0000"
     icon:
-      icon: mdi:battery-high
+      icon: mdi:clock-start
       color: "#ffffff"
-  - name: WorkDone
+  - name: EndWorkDay
     background_color: "#000000"
     label:
-      text: "Turn off the Office Light and Fan"
+      text: "End Done"
       color: "#ff0000"
     icon:
-      icon: mdi:battery-low
-      color: "#ffffff"
-  - name: MovieTime
-    background_color: "#000000"
-    label:
-      text: "Living Room for Movies time"
-      color: "#ff0000"
-    icon:
-      icon: mdi:movie-play
-      color: "#ffffff"
-  - name: BedroomMovieTime
-    background_color: "#000000"
-    label:
-      text: "Bedroom Movies time"
-      color: "#ff0000"
-    icon:
-      icon: mdi:youtube-tv
+      icon: mdi:check-all
       color: "#ffffff"
   - name: HvacOn
     background_color: "#000000"
@@ -47,20 +31,39 @@ actions:
     icon:
       icon: mdi:hvac-off
       color: "#ffffff"
-  - name: KidBedTime
+  - name: BedTime
     background_color: "#000000"
     label:
-      text: "Turn Off All Devices at Kids Room"
-      color: "#ff0000"
-    icon:
-      icon: mdi:devices
-      color: "#ffffff"
-  - name: HomeBedTime
-    background_color: "#000000"
-    label:
-      text: "Prepare Home for Bedtime"
+      text: "Bee Time"
       color: "#ff0000"
     icon:
       icon: mdi:power-sleep
       color: "#ffffff"
+  - name: KidBedTime
+    background_color: "#000000"
+    label:
+      text: "Turn off Kid Room"
+      color: "#ff0000"
+    icon:
+      icon: mdi:clock-end
+      color: "#ffffff"
+  - name: MovieTime
+    background_color: "#000000"
+    label:
+      text: "Living Room  Movie Time"
+      color: "#ff0000"
+    icon:
+      icon: mdi:movie-play
+      color: "#ffffff"
+  - name: BedroomMovieTime
+    background_color: "#000000"
+    label:
+      text: "Bedroom Movie Time"
+      color: "#ff0000"
+    icon:
+      icon: mdi:youtube-tv
+      color: "#ffffff"
+
+
+
 
