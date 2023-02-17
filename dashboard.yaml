@@ -1,0 +1,672 @@
+title: Home
+views:
+  - theme: Backend-selected
+    title: Home
+    path: default_view
+    type: panel
+    icon: mdi:home
+    badges: []
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            class: d-flex flex-row-reverse
+            cards:
+              - type: col
+                class: col-6 col-sm-6 col-md-2 col-lg-2
+                cards:
+                  - type: custom:mushroom-person-card
+                    entity: person.reynier_perez
+                    name: Reynier Perez
+                    fill_container: true
+          - type: row
+            class: d-flex flex-row-reverse
+            cards:
+              - type: custom:mushroom-template-card
+                class: col-xs-6 col-md-2 col-xxl-2
+                primary: Front Door Lock
+                secondary: |-
+                  {% set state=states(entity) %}
+                  {% if state=='locked' %}
+                  Closed
+                  {% elif state=='unlocked' %}
+                  Open
+                  {% else %}
+                  Error
+                  {% endif %}
+                icon: |-
+                  {% set state=states(entity) %}
+                  {% if state=='locked' %}
+                  mdi:lock
+                  {% elif state=='unlocked' %}
+                  mdi:lock-open-alert
+                  {% else %}
+                  mdi:alert
+                  {% endif %}
+                entity: lock.front_door
+                icon_color: |-
+                  {% set state=states(entity) %}
+                  {% if state=='locked' %}
+                  green
+                  {% elif state=='unlocked' %}
+                  red
+                  {% else %}
+                  grey
+                  {% endif %}
+                tap_action:
+                  action: toggle
+              - type: custom:mushroom-template-card
+                class: col-xs-4 col-md-2 col-xxl-2
+                primary: Garage Door
+                secondary: |-
+                  {% set state=states(entity) %}
+                  {% if state=='closed' %}
+                  Closed
+                  {% elif state=='open' %}
+                  Open
+                  {% else %}
+                  Error
+                  {% endif %}
+                icon: |-
+                  {% set state=states(entity) %}
+                  {% if state=='closed' %}
+                  mdi:garage-variant
+                  {% elif state=='open' %}
+                  mdi:garage-open-variant-alert
+                  {% else %}
+                  mdi:alert
+                  {% endif %}
+                entity: cover.garage_door
+                icon_color: |-
+                  {% set state=states(entity) %}
+                  {% if state=='closed' %}
+                  green
+                  {% elif state=='open' %}
+                  red
+                  {% else %}
+                  grey
+                  {% endif %}
+                tap_action:
+                  action: toggle
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-12 col-sm-12 col-md-3 col-lg-3
+                title: Lights
+                cards:
+                  - type: custom:mushroom-light-card
+                    entity: switch.garage_motion_switch_ks200m
+                    name: Garage Light
+                    icon: mdi:lightbulb
+                    fill_container: true
+                    use_light_color: true
+                  - type: custom:mushroom-light-card
+                    entity: switch.outside_lights_hs200
+                    name: Outside Lights
+                    icon: mdi:lightbulb
+                    fill_container: true
+                    use_light_color: true
+                  - type: custom:mushroom-light-card
+                    entity: switch.porch_lights_hs200
+                    name: Porch Light
+                    icon: mdi:lightbulb
+                    fill_container: true
+                    use_light_color: true
+                  - type: custom:mushroom-light-card
+                    entity: switch.enttrance_light_hs200
+                    icon: mdi:lightbulb
+                    name: Entrance Light
+                    fill_container: true
+                    use_light_color: true
+              - type: custom:vertical-stack-in-card
+                class: col-12 col-sm-12 col-md-3 col-lg-3
+                title: Battery levels
+                cards:
+                  - type: custom:battery-state-card
+                    entities:
+                      - entity: sensor.front_door_lock_battery
+                        name: Yale Assure Lock 2
+                      - entity: sensor.front_doorbell_ring_battery
+                        name: Ring Video Doorbell 3
+              - type: custom:weather-card
+                class: col-12 col-sm-12 col-md-3 col-lg-3
+                entity: weather.forecast_home
+                number_of_forecasts: '5'
+                name: Home
+              - type: custom:sun-card
+                class: col-12 col-sm-12 col-md-3 col-xxl-3
+                showElevation: true
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: EP25P4 Living Room
+                cards:
+                  - type: gauge
+                    entity: sensor.smart_plug_living_room_current_consumption
+                    name: Current Consumption
+                    needle: false
+                    severity:
+                      green: 100
+                      yellow: 500
+                      red: 700
+                  - type: glance
+                    name: EP25P4 Living Room Smart Plug
+                    entities:
+                      - entity: sensor.smart_plug_living_room_today_consumption
+                        name: Today's
+                      - entity: sensor.smart_plug_living_room_total_consumption
+                        name: Monthly Total
+                      - entity: sensor.smart_plug_living_room_current_amp
+                        name: Amperage
+                      - entity: sensor.smart_plug_living_room_voltage
+                        name: Voltage
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: EP25P4 Master Bedroom
+                cards:
+                  - type: gauge
+                    entity: sensor.laptop_smart_plug_office_current_consumption
+                    name: Current Consumption
+                    needle: false
+                    severity:
+                      green: 100
+                      yellow: 500
+                      red: 700
+                  - type: glance
+                    name: EP25P4 Living Room Smart Plug
+                    entities:
+                      - entity: sensor.laptop_smart_plug_office_current
+                        name: Current
+                      - entity: sensor.laptop_smart_plug_office_voltage
+                        name: Voltage
+                      - entity: sensor.laptop_smart_plug_office_total_consumption
+                        name: Monthly Total
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: EP25P4 Office Network Devices
+                cards:
+                  - type: gauge
+                    entity: sensor.smart_plug_network_devices_current_consumption
+                    name: Current Consumption
+                    needle: false
+                    severity:
+                      green: 100
+                      yellow: 500
+                      red: 700
+                  - type: glance
+                    name: EP25P4 Living Room Smart Plug
+                    entities:
+                      - entity: sensor.smart_plug_network_devices_current
+                        name: Current
+                      - entity: sensor.smart_plug_network_devices_voltage
+                        name: Voltage
+                      - entity: sensor.smart_plug_network_devices_total_consumption
+                        name: Monthly Total
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: EP25P4 Office Devices
+                cards:
+                  - type: gauge
+                    entity: sensor.smart_plug_office_current_consumption
+                    name: Current Consumption
+                    needle: false
+                    severity:
+                      green: 100
+                      yellow: 500
+                      red: 700
+                  - type: glance
+                    name: EP25P4 Living Room Smart Plug
+                    entities:
+                      - entity: sensor.smart_plug_office_current
+                        name: Current
+                      - entity: sensor.smart_plug_office_voltage
+                        name: Voltage
+                      - entity: sensor.smart_plug_office_total_consumption
+                        name: Monthly Total
+  - theme: Backend-selected
+    title: Living Room
+    path: living-room
+    icon: mdi:youtube-tv
+    type: panel
+    badges: []
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: Lights
+                cards:
+                  - type: custom:mushroom-light-card
+                    name: Light Switch
+                    entity: light.living_room
+                    fill_container: true
+                    use_light_color: true
+                    show_brightness_control: true
+                    collapsible_controls: true
+                  - type: custom:mushroom-fan-card
+                    entity: fan.living_room
+                    name: Fan Switch
+                    icon_animation: true
+                    show_percentage_control: true
+                    collapsible_controls: true
+                    fill_container: true
+                    secondary_info: last-changed
+  - theme: Backend-selected
+    title: Kitchen
+    path: kitchen
+    icon: mdi:countertop
+    type: panel
+    badges: []
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: Lights
+                cards:
+                  - type: custom:mushroom-light-card
+                    entity: light.kitchen_first_dimmer_hs220
+                    name: Dimmer
+                    fill_container: true
+                    secondary_info: last-changed
+                    show_brightness_control: true
+                    collapsible_controls: true
+                    use_light_color: true
+                    layout: horizontal
+                  - type: custom:mushroom-light-card
+                    entity: light.kitchen_second_dimmer_hs220
+                    name: Dimmer
+                    fill_container: true
+                    secondary_info: last-changed
+                    show_brightness_control: true
+                    collapsible_controls: true
+                    use_light_color: true
+                    layout: horizontal
+                  - type: custom:mushroom-light-card
+                    entity: switch.kitchen_light_hs210
+                    name: Main Light
+                    fill_container: true
+                    secondary_info: last-changed
+                    collapsible_controls: true
+                    use_light_color: true
+                    layout: horizontal
+                  - type: custom:mushroom-light-card
+                    entity: switch.patio_fan_light_switch_hs200
+                    name: Patio Light/Fan Switch
+                    fill_container: true
+                    secondary_info: last-changed
+                    collapsible_controls: true
+                    use_light_color: true
+                    layout: horizontal
+              - type: row
+                class: col-xs-12 col-md-9 col-xxl-9
+                cards: []
+  - theme: Backend-selected
+    title: Office
+    path: office
+    icon: mdi:chair-rolling
+    badges: []
+    type: panel
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                cards:
+                  - type: custom:mushroom-light-card
+                    name: Office Light
+                    entity: light.office
+                    show_brightness_control: true
+                    use_light_color: true
+                    collapsible_controls: true
+                    fill_container: true
+                    secondary_info: last-changed
+                    layout: horizontal
+                  - type: custom:mushroom-fan-card
+                    name: Office Fan
+                    entity: fan.office
+                    icon_animation: true
+                    show_percentage_control: true
+                    collapsible_controls: true
+                    fill_container: true
+                    secondary_info: last-changed
+                    layout: horizontal
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-5 col-xxl-5
+                title: QNAP TS453-D
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.reypmnas_cpu_usage
+                    name: CPU Usage
+                    fill_container: true
+                    icon_type: entity-picture
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.reypmnas_memory_usage
+                    fill_container: true
+                    name: Memory Usage
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.reypmnas_cpu_temperature
+                    name: CPU Temperature
+                  - type: custom:mushroom-entity-card
+                    name: eth0 UP
+                    icon: mdi:network
+                    entity: sensor.reypmnas_network_up_eth0
+                  - type: custom:mushroom-entity-card
+                    name: eth0 DOWN
+                    icon: mdi:network
+                    entity: sensor.reypmnas_network_down_eth0
+                  - type: custom:mushroom-entity-card
+                    name: eth1 UP
+                    icon: mdi:network
+                    entity: sensor.reypmnas_network_down_eth1
+                  - type: custom:mushroom-entity-card
+                    name: eth1 DOWN
+                    icon: mdi:network
+                    entity: sensor.reypmnas_network_up_eth1
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-4 col-xxl-4
+                title: Canon TR8600 Series
+                icon: mdi:nas
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series
+                    name: Canon TR8600 Series
+                    fill_container: true
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_black_bk
+                    name: Black Level
+                    fill_container: true
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_black_pgbk
+                    name: Black PGBK Level
+                    fill_container: true
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_cyan
+                    name: Cyan Level
+                    fill_container: true
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_magenta
+                    name: Magenta Level
+                    fill_container: true
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_yellow
+                    name: Yellow Level
+                    fill_container: true
+  - theme: Backend-selected
+    title: Laundry
+    path: laundry
+    icon: mdi:washing-machine
+    badges: []
+    type: panel
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-4 col-xxl-4
+                title: LG Washer WT7900HBA
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.washer
+                    fill_container: true
+                    layout: horizontal
+                    primary_info: name
+                    secondary_info: state
+                    icon_type: icon
+                    tap_action:
+                      action: more-info
+                    double_tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                  - type: glance
+                    entities:
+                      - sensor.washer_water_temp
+                      - sensor.washer_spin_speed
+                      - sensor.washer_rinse_mode
+                      - sensor.washer_current_course
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-4 col-xxl-4
+                title: LG Dryer DLEX7900BE
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.dryer
+                    name: LG Dryer
+                    fill_container: true
+                    layout: horizontal
+                    icon_type: icon
+                    primary_info: name
+                    secondary_info: last-changed
+                    tap_action:
+                      action: more-info
+                    hold_action:
+                      action: none
+                    double_tap_action:
+                      action: none
+                  - type: glance
+                    entities:
+                      - sensor.dryer_temp_control
+                      - sensor.dryer_current_course
+                      - sensor.dryer_dry_level
+              - type: custom:mushroom-light-card
+                name: Laundry Motion Switch KS200M
+                class: col-xs-12 col-md-4 col-xxl-4
+                entity: switch.laundry_motion_switch_ks200m
+                use_light_color: true
+                collapsible_controls: true
+                fill_container: true
+                secondary_info: last-changed
+                layout: horizontal
+  - theme: Backend-selected
+    title: Bedroom
+    path: bedroom
+    icon: mdi:bed
+    badges: []
+    type: panel
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                title: Lights
+                class: col-xs-12 col-md-3 col-xxl-3
+                cards:
+                  - type: custom:mushroom-light-card
+                    name: Light Switch
+                    fill_container: true
+                    show_brightness_control: true
+                    collapsible_controls: true
+                    secondary_info: last-changed
+                    entity: light.master_bedroom
+                    use_light_color: true
+                    layout: horizontal
+                  - type: custom:mushroom-fan-card
+                    entity: fan.master_bedroom
+                    name: Fan Switch
+                    icon_animation: true
+                    show_percentage_control: true
+                    collapsible_controls: true
+                    fill_container: true
+                    secondary_info: last-changed
+                    layout: horizontal
+                  - type: custom:mushroom-light-card
+                    name: Bathroom Dimmer
+                    fill_container: true
+                    show_brightness_control: true
+                    collapsible_controls: true
+                    secondary_info: last-changed
+                    entity: light.bathroom_dimmer_hs220
+                    layout: horizontal
+                  - type: custom:mushroom-light-card
+                    name: Bathroom Light
+                    fill_container: true
+                    show_brightness_control: true
+                    collapsible_controls: true
+                    secondary_info: last-changed
+                    entity: switch.bathroom_light_hs200
+                    use_light_color: true
+                    layout: horizontal
+              - type: custom:vertical-stack-in-card
+                title: Media
+                class: col-xs-12 col-md-4 col-xxl-4
+                cards:
+                  - type: custom:mushroom-media-player-card
+                    entity: media_player.master_bedroom
+                    use_media_artwork: true
+                    use_media_info: true
+                    media_controls:
+                      - play_pause_stop
+                      - previous
+                      - next
+                    collapsible_controls: true
+                    volume_controls:
+                      - volume_set
+                    show_volume_level: true
+                    fill_container: false
+                    tap_action:
+                      action: toggle
+                    card_mod:
+                      style: |
+                        ha-card {
+                          {% if not is_state(config.entity, 'off') %}
+                            background-image: url( '{{ state_attr( config.entity, "entity_picture" ) }}' );
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            position: relative;
+                            background-blend-mode: overlay;
+                            background-color: rgba(var(--rgb-card-background-color),0.5);
+                          {% endif %}  
+                        }
+                  - type: media-control
+                    class: col-xs-12 col-md-6 col-xxl-6
+                    entity: media_player.lg_webos_smart_tv_2
+                    name: LG webOS Smart Tv 55UQ9000PUD
+                  - title: Fire TV
+                    type: custom:mini-media-player
+                    class: col-xs-12 col-md-6 col-xxl-6
+                    artwork: full-cover
+                    volume_stateless: true
+                    group: false
+                    toggle_power: true
+                    entity: media_player.fire_tv_192_168_11_60
+                    source: full
+                    sound_mode: full
+                    background: red
+                    name: Kid Fire TV
+  - theme: Backend-selected
+    title: Kid Bedroom
+    path: kid-bedroom
+    icon: mdi:teddy-bear
+    badges: []
+    type: panel
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:mushroom-light-card
+                class: col-xs-12 col-md-2 col-xxl-2
+                entity: light.kid_bedroom
+                name: Light Switch
+                fill_container: true
+                collapsible_controls: true
+                secondary_info: last-changed
+                layout: horizontal
+              - type: custom:mushroom-fan-card
+                class: col-xs-12 col-md-2 col-xxl-2
+                entity: fan.kid_bedroom
+                name: Fan Switch
+                icon_animation: true
+                show_percentage_control: true
+                collapsible_controls: true
+                fill_container: true
+                secondary_info: last-changed
+                layout: horizontal
+          - type: row
+            cards:
+              square: false
+              columns: 2
+              type: grid
+              cards:
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: custom:mushroom-template-card
+                      entity: media_player.tv_kid_bedroom
+                      icon: mdi:television
+                      icon_color: |
+                        {% if is_state('media_player.tv_kid_bedroom', 'on') %} 
+                        indigo
+                        {%else%} 
+                        grey
+                        {% endif %}
+                      tap_action:
+                        action: more-info
+                    - type: custom:layout-card
+                      layout_type: masonry
+                      layout:
+                        width: 106
+                        max_cols: 1
+                        height: auto
+                        padding: 0px
+                        card_margin: var(--masonry-view-card-margin, -10px 8px 15px)
+                      cards: null
+                    - type: custom:mushroom-chips-card
+                      chips:
+                        - type: entity
+                          entity: media_player.tv_kid_bedroom
+                          icon: mdi:power
+                          icon_color: black
+                          content_info: none
+                          tap_action:
+                            action: more-info
+                      alignment: center
+                      card_mod:
+                        style: |
+                          ha-card {
+                            margin: -4px 0px 11px;
+                            --chip-background: rgba(var(--rgb-disabled), 0.15);
+                            --chip-border-width: 0;
+                            --chip-border-radius: 12px;
+                            --chip-height: 43px;
+                            --chip-padding: 62px;
+                            --chip-spacing: 10px;
+                          }
+                - type: custom:vertical-stack-in-card
+                  cards:
+                    - type: custom:mushroom-media-player-card
+                      entity: media_player.atv_kid_bedroom
+                      use_media_artwork: true
+                      use_media_info: true
+                      media_controls:
+                        - play_pause_stop
+                        - previous
+                        - next
+                      collapsible_controls: true
+                      volume_controls:
+                        - volume_set
+                      show_volume_level: true
+                      fill_container: false
+                      tap_action:
+                        action: toggle
+                      card_mod:
+                        style: |
+                          ha-card {
+                            {% if not is_state(config.entity, 'off') %}
+                              background-image: url( '{{ state_attr( config.entity, "entity_picture" ) }}' );
+                              background-position: center;
+                              background-repeat: no-repeat;
+                              background-size: cover;
+                              position: relative;
+                              background-blend-mode: overlay;
+                              background-color: rgba(var(--rgb-card-background-color),0.5);
+                            {% end
