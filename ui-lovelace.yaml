@@ -120,14 +120,14 @@ views:
                     use_light_color: true
               - type: custom:vertical-stack-in-card
                 class: col-12 col-sm-12 col-md-3 col-lg-3
-                title: Battery levels
+                title: Batteries Level
                 cards:
-                  - type: custom:battery-state-card
-                    entities:
-                      - entity: sensor.front_door_lock_battery
-                        name: Yale Assure Lock 2
-                      - entity: sensor.front_doorbell_ring_battery
-                        name: Ring Video Doorbell 3
+                  - type: custom:battery-entity-row
+                    entity: sensor.front_door_lock_battery
+                    name: Yale Assure Lock 2
+                  - type: custom:battery-entity-row
+                    entity: sensor.front_doorbell_ring_battery
+                    name: Ring Video Doorbell 3
               - type: custom:weather-card
                 class: col-12 col-sm-12 col-md-3 col-lg-3
                 entity: weather.forecast_home
@@ -225,6 +225,123 @@ views:
                       - entity: sensor.smart_plug_office_total_consumption
                         name: Monthly Total
   - theme: Backend-selected
+    title: Office
+    path: office
+    icon: mdi:chair-rolling
+    badges: []
+    type: panel
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            cards:
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                cards:
+                  - type: custom:mushroom-light-card
+                    name: Office Light
+                    entity: light.office
+                    show_brightness_control: true
+                    use_light_color: true
+                    collapsible_controls: true
+                    fill_container: true
+                    secondary_info: last-changed
+                    layout: horizontal
+                  - type: custom:mushroom-fan-card
+                    name: Office Fan
+                    entity: fan.office
+                    icon_animation: true
+                    show_percentage_control: true
+                    collapsible_controls: true
+                    fill_container: true
+                    secondary_info: last-changed
+                    layout: horizontal
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: QNAP TS453-D
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.reypmnas_cpu_usage
+                    name: CPU Usage
+                    fill_container: true
+                    icon_type: entity-picture
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.reypmnas_memory_usage
+                    fill_container: true
+                    name: Memory Usage
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.reypmnas_cpu_temperature
+                    name: CPU Temperature
+                  - type: custom:mini-graph-card
+                    name: Network Status
+                    icon: mdi:network
+                    entities:
+                      - entity: sensor.reypmnas_network_up_eth0
+                        name: eth0 Up
+                      - entity: sensor.reypmnas_network_down_eth0
+                        name: eth0 Down
+                      - entity: sensor.reypmnas_network_down_eth1
+                        name: eth1 Up
+                      - entity: sensor.reypmnas_network_up_eth1
+                        name: eth1 Down
+              - type: custom:vertical-stack-in-card
+                class: col-xs-12 col-md-3 col-xxl-3
+                title: Canon TR8600 Series
+                icon: mdi:nas
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series
+                    name: Canon TR8600 Series
+                    fill_container: true
+                    icon_color: |
+                      {% if is_state('sensor.canon_tr8600_series', 'idle') %}
+                        gray
+                      {%elif is_state('sensor.canon_tr8600_series', 'printing') %}
+                        red
+                      {%else%}
+                        black
+                      {% endif %}
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_black_bk
+                    name: Black Ink Level
+                    icon: mdi:water-check
+                    icon_color: black
+                    fill_container: true
+                    tap_action:
+                      action: more-info
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_black_pgbk
+                    name: Black PGBK Ink Level
+                    icon: mdi:water-check
+                    icon_color: black
+                    fill_container: true
+                    tap_action:
+                      action: more-info
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_cyan
+                    name: Cyan Ink Level
+                    icon: mdi:water-check
+                    icon_color: cyan
+                    fill_container: true
+                    tap_action:
+                      action: more-info
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_magenta
+                    name: Magenta Ink Level
+                    icon: mdi:water-check
+                    icon_color: '#FF00FF'
+                    fill_container: true
+                    tap_action:
+                      action: more-info
+                  - type: custom:mushroom-entity-card
+                    entity: sensor.canon_tr8600_series_yellow
+                    name: Yellow Ink Level
+                    icon: mdi:water-check
+                    icon_color: yellow
+                    fill_container: true
+                    tap_action:
+                      action: more-info
+  - theme: Backend-selected
     title: Living Room
     path: living-room
     icon: mdi:youtube-tv
@@ -306,99 +423,6 @@ views:
               - type: row
                 class: col-xs-12 col-md-9 col-xxl-9
                 cards: []
-  - theme: Backend-selected
-    title: Office
-    path: office
-    icon: mdi:chair-rolling
-    badges: []
-    type: panel
-    cards:
-      - type: custom:bootstrap-grid-card
-        cards:
-          - type: row
-            cards:
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-3 col-xxl-3
-                cards:
-                  - type: custom:mushroom-light-card
-                    name: Office Light
-                    entity: light.office
-                    show_brightness_control: true
-                    use_light_color: true
-                    collapsible_controls: true
-                    fill_container: true
-                    secondary_info: last-changed
-                    layout: horizontal
-                  - type: custom:mushroom-fan-card
-                    name: Office Fan
-                    entity: fan.office
-                    icon_animation: true
-                    show_percentage_control: true
-                    collapsible_controls: true
-                    fill_container: true
-                    secondary_info: last-changed
-                    layout: horizontal
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-5 col-xxl-5
-                title: QNAP TS453-D
-                cards:
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.reypmnas_cpu_usage
-                    name: CPU Usage
-                    fill_container: true
-                    icon_type: entity-picture
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.reypmnas_memory_usage
-                    fill_container: true
-                    name: Memory Usage
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.reypmnas_cpu_temperature
-                    name: CPU Temperature
-                  - type: custom:mushroom-entity-card
-                    name: eth0 UP
-                    icon: mdi:network
-                    entity: sensor.reypmnas_network_up_eth0
-                  - type: custom:mushroom-entity-card
-                    name: eth0 DOWN
-                    icon: mdi:network
-                    entity: sensor.reypmnas_network_down_eth0
-                  - type: custom:mushroom-entity-card
-                    name: eth1 UP
-                    icon: mdi:network
-                    entity: sensor.reypmnas_network_down_eth1
-                  - type: custom:mushroom-entity-card
-                    name: eth1 DOWN
-                    icon: mdi:network
-                    entity: sensor.reypmnas_network_up_eth1
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-4 col-xxl-4
-                title: Canon TR8600 Series
-                icon: mdi:nas
-                cards:
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.canon_tr8600_series
-                    name: Canon TR8600 Series
-                    fill_container: true
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.canon_tr8600_series_black_bk
-                    name: Black Level
-                    fill_container: true
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.canon_tr8600_series_black_pgbk
-                    name: Black PGBK Level
-                    fill_container: true
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.canon_tr8600_series_cyan
-                    name: Cyan Level
-                    fill_container: true
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.canon_tr8600_series_magenta
-                    name: Magenta Level
-                    fill_container: true
-                  - type: custom:mushroom-entity-card
-                    entity: sensor.canon_tr8600_series_yellow
-                    name: Yellow Level
-                    fill_container: true
   - theme: Backend-selected
     title: Laundry
     path: laundry
