@@ -10,7 +10,7 @@ actions:
   - name: EndWorkDay
     background_color: "#000000"
     label:
-      text: "End Done"
+      text: "End Work"
       color: "#ff0000"
     icon:
       icon: mdi:check-all
@@ -34,7 +34,7 @@ actions:
   - name: BedTime
     background_color: "#000000"
     label:
-      text: "Bee Time"
+      text: "Bed Time"
       color: "#ff0000"
     icon:
       icon: mdi:power-sleep
@@ -42,7 +42,7 @@ actions:
   - name: KidBedTime
     background_color: "#000000"
     label:
-      text: "Turn off Kid Room"
+      text: "Kid Room Off"
       color: "#ff0000"
     icon:
       icon: mdi:clock-end
@@ -50,7 +50,7 @@ actions:
   - name: MovieTime
     background_color: "#000000"
     label:
-      text: "Living Room  Movie Time"
+      text: "Movie Time"
       color: "#ff0000"
     icon:
       icon: mdi:movie-play
