@@ -1,3 +1,4 @@
+# QNAP
 - platform: qnap
   host: !secret qnap_host
   username: !secret qnap_username
@@ -15,3 +16,4 @@
     - drive_smart_status
     - drive_temp
     - volume_percentage_used
+

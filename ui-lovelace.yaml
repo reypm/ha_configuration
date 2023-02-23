@@ -1,5 +1,6 @@
 title: Home
 views:
+  # Home View
   - theme: Backend-selected
     title: Home
     path: default_view
@@ -136,52 +137,41 @@ views:
               - type: custom:sun-card
                 class: col-12 col-sm-12 col-md-3 col-xxl-3
                 showElevation: true
+  # Office View
+  - theme: Backend-selected
+    title: Office
+    path: office
+    icon: mdi:chair-rolling
+    badges: []
+    type: panel
+    cards:
+      - type: custom:bootstrap-grid-card
+        cards:
+          - type: row
+            class: d-flex flex-row-reverse
+            cards:
+              - type: custom:mushroom-light-card
+                class: col-xs-6 col-md-3 col-xxl-3
+                name: Office Light
+                entity: light.office
+                show_brightness_control: true
+                use_light_color: true
+                collapsible_controls: true
+                fill_container: true
+                secondary_info: last-changed
+                layout: horizontal
+              - type: custom:mushroom-fan-card
+                class: col-xs-6 col-md-3 col-xxl-3
+                name: Office Fan
+                entity: fan.office
+                icon_animation: true
+                show_percentage_control: true
+                collapsible_controls: true
+                fill_container: true
+                secondary_info: last-changed
+                layout: horizontal
           - type: row
             cards:
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-3 col-xxl-3
-                title: EP25P4 Living Room
-                cards:
-                  - type: gauge
-                    entity: sensor.smart_plug_living_room_current_consumption
-                    name: Current Consumption
-                    needle: false
-                    severity:
-                      green: 100
-                      yellow: 500
-                      red: 700
-                  - type: glance
-                    name: EP25P4 Living Room Smart Plug
-                    entities:
-                      - entity: sensor.smart_plug_living_room_today_consumption
-                        name: Today's
-                      - entity: sensor.smart_plug_living_room_total_consumption
-                        name: Monthly Total
-                      - entity: sensor.smart_plug_living_room_current_amp
-                        name: Amperage
-                      - entity: sensor.smart_plug_living_room_voltage
-                        name: Voltage
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-3 col-xxl-3
-                title: EP25P4 Master Bedroom
-                cards:
-                  - type: gauge
-                    entity: sensor.laptop_smart_plug_office_current_consumption
-                    name: Current Consumption
-                    needle: false
-                    severity:
-                      green: 100
-                      yellow: 500
-                      red: 700
-                  - type: glance
-                    name: EP25P4 Living Room Smart Plug
-                    entities:
-                      - entity: sensor.laptop_smart_plug_office_current
-                        name: Current
-                      - entity: sensor.laptop_smart_plug_office_voltage
-                        name: Voltage
-                      - entity: sensor.laptop_smart_plug_office_total_consumption
-                        name: Monthly Total
               - type: custom:vertical-stack-in-card
                 class: col-xs-12 col-md-3 col-xxl-3
                 title: EP25P4 Office Network Devices
@@ -224,38 +214,6 @@ views:
                         name: Voltage
                       - entity: sensor.smart_plug_office_total_consumption
                         name: Monthly Total
-  - theme: Backend-selected
-    title: Office
-    path: office
-    icon: mdi:chair-rolling
-    badges: []
-    type: panel
-    cards:
-      - type: custom:bootstrap-grid-card
-        cards:
-          - type: row
-            cards:
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-3 col-xxl-3
-                cards:
-                  - type: custom:mushroom-light-card
-                    name: Office Light
-                    entity: light.office
-                    show_brightness_control: true
-                    use_light_color: true
-                    collapsible_controls: true
-                    fill_container: true
-                    secondary_info: last-changed
-                    layout: horizontal
-                  - type: custom:mushroom-fan-card
-                    name: Office Fan
-                    entity: fan.office
-                    icon_animation: true
-                    show_percentage_control: true
-                    collapsible_controls: true
-                    fill_container: true
-                    secondary_info: last-changed
-                    layout: horizontal
               - type: custom:vertical-stack-in-card
                 class: col-xs-12 col-md-3 col-xxl-3
                 title: QNAP TS453-D
@@ -341,6 +299,7 @@ views:
                     fill_container: true
                     tap_action:
                       action: more-info
+  # Living Room View
   - theme: Backend-selected
     title: Living Room
     path: living-room
@@ -351,26 +310,104 @@ views:
       - type: custom:bootstrap-grid-card
         cards:
           - type: row
+            class: d-flex flex-row-reverse
+            cards:
+              - type: custom:mushroom-light-card
+                class: col-xs-6 col-md-2 col-xxl-2
+                name: Light Switch
+                entity: light.living_room
+                fill_container: true
+                use_light_color: true
+                show_brightness_control: true
+                collapsible_controls: true
+              - type: custom:mushroom-fan-card
+                class: col-xs-6 col-md-2 col-xxl-2
+                entity: fan.living_room
+                name: Fan Switch
+                icon_animation: true
+                show_percentage_control: true
+                collapsible_controls: true
+                fill_container: true
+                secondary_info: last-changed
+              - type: custom:mushroom-light-card
+                entity: light.rgbic_tv_backlight
+                class: col-xs-6 col-md-3 col-xxl-3
+                name: Tv Backlight H605C
+                show_color_control: true
+                fill_container: true
+                layout: horizontal
+          - type: row
             cards:
               - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-3 col-xxl-3
-                title: Lights
+                class: col-xs-6 col-md-4 col-xxl-4
+                title: EP25P4 Living Room
                 cards:
-                  - type: custom:mushroom-light-card
-                    name: Light Switch
-                    entity: light.living_room
-                    fill_container: true
-                    use_light_color: true
-                    show_brightness_control: true
-                    collapsible_controls: true
-                  - type: custom:mushroom-fan-card
-                    entity: fan.living_room
-                    name: Fan Switch
-                    icon_animation: true
-                    show_percentage_control: true
-                    collapsible_controls: true
-                    fill_container: true
-                    secondary_info: last-changed
+                  - type: gauge
+                    entity: sensor.smart_plug_living_room_current_consumption
+                    name: Current Consumption
+                    needle: false
+                    severity:
+                      green: 100
+                      yellow: 500
+                      red: 700
+                  - type: glance
+                    name: EP25P4 Living Room Smart Plug
+                    entities:
+                      - entity: sensor.smart_plug_living_room_today_consumption
+                        name: Today's
+                      - entity: sensor.smart_plug_living_room_total_consumption
+                        name: Monthly Total
+                      - entity: sensor.smart_plug_living_room_current_amp
+                        name: Amperage
+                      - entity: sensor.smart_plug_living_room_voltage
+                        name: Voltage
+              - type: custom:mini-media-player
+                entity: media_player.atv_living_room
+                class: col-xs-6 col-md-4 col-xxl-4
+                name: Apple Tv 4K
+                artwork: full-cover
+                volume_stateless: true
+                source: icon
+                sound_mode: full
+                info: short
+                volume_step: 10
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+              - type: custom:mini-media-player
+                entity: media_player.fire_tv_living_room
+                class: col-xs-6 col-md-4 col-xxl-4
+                name: FireTv 4K
+                artwork: full-cover
+                volume_stateless: true
+                source: icon
+                sound_mode: full
+                info: short
+                volume_step: 10
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+              - type: custom:mini-media-player
+                entity: media_player.lg_tv_living_room
+                class: col-xs-6 col-md-4 col-xxl-4
+                name: LG Tv OLED77C1PUB
+                source: icon
+                sound_mode: icon
+                info: short
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+              - type: custom:mini-media-player
+                entity: media_player.lg_soundbar_sp9ya
+                class: col-xs-6 col-md-4 col-xxl-4
+                name: LG Soundbar SP9YA
+                source: icon
+                sound_mode: icon
+                info: short
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+  # Kitchen View
   - theme: Backend-selected
     title: Kitchen
     path: kitchen
@@ -423,6 +460,7 @@ views:
               - type: row
                 class: col-xs-12 col-md-9 col-xxl-9
                 cards: []
+  # Laundry View
   - theme: Backend-selected
     title: Laundry
     path: laundry
@@ -489,6 +527,7 @@ views:
                 fill_container: true
                 secondary_info: last-changed
                 layout: horizontal
+  # Master Bedroom
   - theme: Backend-selected
     title: Bedroom
     path: bedroom
@@ -499,94 +538,107 @@ views:
       - type: custom:bootstrap-grid-card
         cards:
           - type: row
+            class: d-flex flex-row-reverse
+            cards:
+              - type: custom:mushroom-light-card
+                class: col-xs-12 col-md-2 col-xxl-2
+                name: Light Switch
+                fill_container: true
+                show_brightness_control: true
+                collapsible_controls: true
+                secondary_info: last-changed
+                entity: light.master_bedroom
+                use_light_color: true
+                layout: horizontal
+              - type: custom:mushroom-fan-card
+                class: col-xs-12 col-md-2 col-xxl-2
+                entity: fan.master_bedroom
+                name: Fan Switch
+                icon_animation: true
+                show_percentage_control: true
+                collapsible_controls: true
+                fill_container: true
+                secondary_info: last-changed
+                layout: horizontal
+              - type: custom:mushroom-light-card
+                class: col-xs-12 col-md-2 col-xxl-2
+                name: Bathroom Dimmer
+                fill_container: true
+                show_brightness_control: true
+                collapsible_controls: true
+                secondary_info: last-changed
+                entity: light.bathroom_dimmer_hs220
+                layout: horizontal
+              - type: custom:mushroom-light-card
+                class: col-xs-12 col-md-2 col-xxl-2
+                name: Bathroom Light
+                fill_container: true
+                show_brightness_control: true
+                collapsible_controls: true
+                secondary_info: last-changed
+                entity: switch.bathroom_light_hs200
+                use_light_color: true
+                layout: horizontal
+          - type: row
             cards:
               - type: custom:vertical-stack-in-card
-                title: Lights
                 class: col-xs-12 col-md-3 col-xxl-3
+                title: EP25P4 Master Bedroom
                 cards:
-                  - type: custom:mushroom-light-card
-                    name: Light Switch
-                    fill_container: true
-                    show_brightness_control: true
-                    collapsible_controls: true
-                    secondary_info: last-changed
-                    entity: light.master_bedroom
-                    use_light_color: true
-                    layout: horizontal
-                  - type: custom:mushroom-fan-card
-                    entity: fan.master_bedroom
-                    name: Fan Switch
-                    icon_animation: true
-                    show_percentage_control: true
-                    collapsible_controls: true
-                    fill_container: true
-                    secondary_info: last-changed
-                    layout: horizontal
-                  - type: custom:mushroom-light-card
-                    name: Bathroom Dimmer
-                    fill_container: true
-                    show_brightness_control: true
-                    collapsible_controls: true
-                    secondary_info: last-changed
-                    entity: light.bathroom_dimmer_hs220
-                    layout: horizontal
-                  - type: custom:mushroom-light-card
-                    name: Bathroom Light
-                    fill_container: true
-                    show_brightness_control: true
-                    collapsible_controls: true
-                    secondary_info: last-changed
-                    entity: switch.bathroom_light_hs200
-                    use_light_color: true
-                    layout: horizontal
-              - type: custom:vertical-stack-in-card
-                title: Media
+                  - type: gauge
+                    entity: sensor.laptop_smart_plug_office_current_consumption
+                    name: Current Consumption
+                    needle: false
+                    severity:
+                      green: 100
+                      yellow: 500
+                      red: 700
+                  - type: glance
+                    name: EP25P4 Living Room Smart Plug
+                    entities:
+                      - entity: sensor.laptop_smart_plug_office_current
+                        name: Current
+                      - entity: sensor.laptop_smart_plug_office_voltage
+                        name: Voltage
+                      - entity: sensor.laptop_smart_plug_office_total_consumption
+                        name: Monthly Total
+              - type: custom:mini-media-player
                 class: col-xs-12 col-md-4 col-xxl-4
-                cards:
-                  - type: custom:mushroom-media-player-card
-                    entity: media_player.master_bedroom
-                    use_media_artwork: true
-                    use_media_info: true
-                    media_controls:
-                      - play_pause_stop
-                      - previous
-                      - next
-                    collapsible_controls: true
-                    volume_controls:
-                      - volume_set
-                    show_volume_level: true
-                    fill_container: false
-                    tap_action:
-                      action: toggle
-                    card_mod:
-                      style: |
-                        ha-card {
-                          {% if not is_state(config.entity, 'off') %}
-                            background-image: url( '{{ state_attr( config.entity, "entity_picture" ) }}' );
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            position: relative;
-                            background-blend-mode: overlay;
-                            background-color: rgba(var(--rgb-card-background-color),0.5);
-                          {% endif %}  
-                        }
-                  - type: media-control
-                    class: col-xs-12 col-md-6 col-xxl-6
-                    entity: media_player.lg_webos_smart_tv_2
-                    name: LG webOS Smart Tv 55UQ9000PUD
-                  - title: Fire TV
-                    type: custom:mini-media-player
-                    class: col-xs-12 col-md-6 col-xxl-6
-                    artwork: full-cover
-                    volume_stateless: true
-                    group: false
-                    toggle_power: true
-                    entity: media_player.fire_tv_192_168_11_60
-                    source: full
-                    sound_mode: full
-                    background: red
-                    name: Kid Fire TV
+                entity: media_player.atv_master_bedroom
+                name: Apple Tv 4K
+                artwork: full-cover
+                volume_stateless: true
+                source: icon
+                sound_mode: full
+                info: short
+                volume_step: 10
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+              - type: custom:mini-media-player
+                class: col-xs-12 col-md-4 col-xxl-4
+                entity: media_player.fire_tv_master_bedroom
+                name: Fire Tv
+                artwork: full-cover
+                volume_stateless: true
+                source: full
+                sound_mode: full
+                info: short
+                volume_step: 10
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+              - type: custom:mini-media-player
+                class: col-xs-12 col-md-4 col-xxl-4
+                name: LG webOS Smart Tv 55UQ9000PUD
+                entity: media_player.lg_tv_master_bedroom
+                source: icon
+                sound_mode: icon
+                info: short
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+  # Kid Bedroom
   - theme: Backend-selected
     title: Kid Bedroom
     path: kid-bedroom
@@ -597,6 +649,7 @@ views:
       - type: custom:bootstrap-grid-card
         cards:
           - type: row
+            class: d-flex flex-row-reverse
             cards:
               - type: custom:mushroom-light-card
                 class: col-xs-12 col-md-2 col-xxl-2
@@ -616,113 +669,33 @@ views:
                 fill_container: true
                 secondary_info: last-changed
                 layout: horizontal
-              - type: custom:vertical-stack-in-card
-                class: col-xs-12 col-md-4 col-xxl-4
-                cards:
-                  - type: custom:mushroom-media-player-card
-                    entity: media_player.tv_kid_bedroom
-                    use_media_artwork: true
-                    use_media_info: true
-                    media_controls:
-                      - play_pause_stop
-                      - previous
-                      - next
-                    collapsible_controls: true
-                    volume_controls:
-                      - volume_set
-                    show_volume_level: true
-                    fill_container: false
-                    tap_action:
-                      action: toggle
-                    card_mod:
-                      style: |
-                        ha-card {
-                          {% if not is_state(config.entity, 'off') %}
-                            background-image: url( '{{ state_attr( config.entity, "entity_picture" ) }}' );
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                            position: relative;
-                            background-blend-mode: overlay;
-                            background-color: rgba(var(--rgb-card-background-color),0.5);
-                          {% endif %}  
-                        }
-
-#                  - type: custom:mushroom-template-card
-#                    entity: media_player.tv_kid_bedroom
-#                    icon: mdi:television
-#                    icon_color: |
-#                      {% if is_state('media_player.tv_kid_bedroom', 'on') %}
-#                      indigo
-#                      {%else%}
-#                      grey
-#                      {% endif %}
-#                    tap_action:
-#                      action: more-info
-#                  - type: custom:layout-card
-#                    layout_type: masonry
-#                    layout:
-#                      width: 106
-#                      max_cols: 1
-#                      height: auto
-#                      padding: 0px
-#                      card_margin: var(--masonry-view-card-margin, -10px 8px 15px)
-#                    cards: null
-#                  - type: custom:mushroom-chips-card
-#                    chips:
-#                      - type: entity
-#                        entity: media_player.tv_kid_bedroom
-#                        icon: mdi:power
-#                        icon_color: black
-#                        content_info: none
-#                        tap_action:
-#                          action: more-info
-#                    alignment: center
-#                    card_mod:
-#                      style: |
-#                        ha-card {
-#                          margin: -4px 0px 11px;
-#                          --chip-background: rgba(var(--rgb-disabled), 0.15);
-#                          --chip-border-width: 0;
-#                          --chip-border-radius: 12px;
-#                          --chip-height: 43px;
-#                          --chip-padding: 62px;
-#                          --chip-spacing: 10px;
-#                        }
-#              - type: custom:vertical-stack-in-card
-#                class: col-xs-12 col-md-4 col-xxl-4
-#                cards:
-#                  - type: custom:mushroom-media-player-card
-#                    entity: media_player.atv_kid_bedroom
-#                    use_media_artwork: true
-#                    use_media_info: true
-#                    media_controls:
-#                      - play_pause_stop
-#                      - previous
-#                      - next
-#                    collapsible_controls: true
-#                    volume_controls:
-#                      - volume_set
-#                    show_volume_level: true
-#                    fill_container: false
-#                    tap_action:
-#                      action: toggle
-#                    card_mod:
-#                      style: |
-#                        ha-card {
-#                          {% if not is_state(config.entity, 'off') %}
-#                            background-image: url( '{{ state_attr( config.entity, "entity_picture" ) }}' );
-#                            background-position: center;
-#                            background-repeat: no-repeat;
-#                            background-size: cover;
-#                            position: relative;
-#                            background-blend-mode: overlay;
-#                            background-color: rgba(var(--rgb-card-background-color),0.5);
-#                          {% end
           - type: row
-            class: col-xs-12 col-md-4 col-xxl4
             cards:
+              - type: custom:mini-media-player
+                class: col-xs-12 col-lg-4 col-md-4 col-xxl-4
+                entity: media_player.atv_kid_bedroom
+                name: Apple Tv 4K
+                artwork: full-cover
+                volume_stateless: true
+                source: icon
+                sound_mode: full
+                info: short
+                volume_step: 10
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
+              - type: custom:mini-media-player
+                class: col-xs-12 col-lg-4 col-md-4 col-xxl-4
+                name: Samsung 5 Series (40) [UN40N5200AFXZA]
+                entity: media_player.tv_kid_bedroom
+                source: icon
+                sound_mode: icon
+                info: short
+                max_volume: 100
+                min_volume: 10
+                toggle_power: true
               - type: picture-entity
+                class: col-xs-12 col-lg-4 col-md-4 col-xxl-4
                 entity: light.kid_bedroom
                 camera_image: camera.maxi_room_hd_stream
                 camera_view: live

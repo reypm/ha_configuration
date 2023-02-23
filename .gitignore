@@ -4,6 +4,11 @@
 !*.yaml
 !.gitignore
 !*.md
+!blueprints
+!custom_components
+!custom_icons
+!themes
+!www
 
 # Ignore folders.
 .storage

@@ -43,8 +43,6 @@ lovelace:
       type: module
     - url: /hacsfiles/weather-card/weather-card.js
       type: module
-    - url: /hacsfiles/battery-state-card/battery-state-card.js
-      type: module
     - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
     - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js?v=0.4.4
@@ -54,6 +52,10 @@ lovelace:
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js?v=0.11.0
       type: module
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js?v=1.16.5
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
       type: module
 
 wake_on_lan:
@@ -77,3 +79,12 @@ logger:
   logs:
     custom_components.localtuya: debug
     custom_components.localtuya.pytuya: debug
+#    pyatv: debug
+    homeassistant.components.apple_tv: debug
+
+#media_player:
+#  - platform: samsungtv_custom
+#    host: 192.168.11.185
+#    mac: d8:a3:5c:e7:0c:37
+#      port: (8001 or 8002)
+#      sourcelist: '{"PlayStation": "KEY_HDMI1", "RaspberryPi": "KEY_HDMI2", "Chromecast": "KEY_HDMI3"}'
