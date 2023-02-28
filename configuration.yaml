@@ -33,7 +33,6 @@ lovelace:
       icon: mdi:home
       show_in_sidebar: true
       filename: ui-lovelace.yaml
-
   resources:
     - url: /hacsfiles/bootstrap-grid-card/bootstrap-grid-card.js
       type: module
@@ -57,6 +56,16 @@ lovelace:
       type: module
     - url: /hacsfiles/button-card/button-card.js
       type: module
+    - url: /hacsfiles/rgb-light-card/card.js
+      type: module
+    - url: /hacsfiles/garbage-collection-card/garbage-collection-card.js
+      type: module
+    - url: https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap
+      type: css
+    - url: /hacsfiles/lovelace-big-slider-card/big-slider-card.js
+      type: module
+    - url: /hacsfiles/lovelace-mushroom-better-sliders/mushroom.js
+      type: module
 
 wake_on_lan:
 
@@ -77,14 +86,8 @@ sensor: !include sensors.yaml
 logger:
   default: warning
   logs:
-    custom_components.localtuya: debug
-    custom_components.localtuya.pytuya: debug
+#    custom_components.localtuya: debug
+#    custom_components.localtuya.pytuya: debug
 #    pyatv: debug
-    homeassistant.components.apple_tv: debug
-
-#media_player:
-#  - platform: samsungtv_custom
-#    host: 192.168.11.185
-#    mac: d8:a3:5c:e7:0c:37
-#      port: (8001 or 8002)
-#      sourcelist: '{"PlayStation": "KEY_HDMI1", "RaspberryPi": "KEY_HDMI2", "Chromecast": "KEY_HDMI3"}'
+#    homeassistant.components.apple_tv: debug
+    homeassistant.components.fontawesome: debug

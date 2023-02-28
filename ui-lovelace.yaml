@@ -6,6 +6,7 @@ views:
     path: default_view
     type: panel
     icon: mdi:home
+#    icon: fas:house
     badges: []
     cards:
       - type: custom:bootstrap-grid-card
@@ -89,6 +90,9 @@ views:
                   {% endif %}
                 tap_action:
                   action: toggle
+              - type: custom:garbage-collection-card
+                class: col-12 col-sm-12 col-md-3 col-xxl-3
+                entity: sensor.garbage_collection
           - type: row
             cards:
               - type: custom:vertical-stack-in-card
@@ -119,6 +123,14 @@ views:
                     name: Entrance Light
                     fill_container: true
                     use_light_color: true
+                card_mod:
+                  style:
+                    ha-card$: |
+                      .card-header {
+                        font-family: 'Open Sans', sans-serif;
+                        font-weight: 800
+                        color: blue
+                      }
               - type: custom:vertical-stack-in-card
                 class: col-12 col-sm-12 col-md-3 col-lg-3
                 title: Batteries Level
@@ -491,6 +503,7 @@ views:
                       action: none
                   - type: glance
                     entities:
+                      - sensor.dryer_remaining_time
                       - sensor.washer_water_temp
                       - sensor.washer_spin_speed
                       - sensor.washer_rinse_mode
@@ -515,6 +528,7 @@ views:
                       action: none
                   - type: glance
                     entities:
+                      - sensor.washer_remaining_time
                       - sensor.dryer_temp_control
                       - sensor.dryer_current_course
                       - sensor.dryer_dry_level
