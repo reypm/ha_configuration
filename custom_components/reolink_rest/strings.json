@@ -1,0 +1,72 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Initializing...",
+        "description": ""
+      },
+      "connection": {
+        "title": "Connect to device",
+        "data": {
+          "host": "[%key:common::config_flow::data::host%]",
+          "port": "[%key:common::config_flow::data::port%]",
+          "use_https": "HTTPS"
+        }
+      },
+      "auth": {
+        "title": "Login",
+        "data": {
+          "username": "[%key:common::config_flow::data::username%]",
+          "password": "[%key:common::config_flow::data::password%]"
+        }
+      },
+      "channels": {
+        "title": "Choose Channels",
+        "data": {
+          "prefix_channel": "Channel Prefix",
+          "channels": "Channels"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "timeout": "[%key:common::config_flow::error::timeout_connect%]",
+      "channel_required": "Channel selection is required",
+      "auth_required": "Authentication is required"
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
+      "device_error": "A device communication error occurred and setup cannot complete."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "description": "Configuration Menu",
+        "menu_options": {
+          "options": "Device Options",
+          "channels": "Device Channels",
+          "commit": "Done"
+        }
+      },
+      "options": {
+        "description": "General Device Options",
+        "data": {
+          "scan_interval": "Polling Interval",
+          "motion_interval": "Polling Motion Interval"
+        }
+      },
+      "channels": {
+        "title": "Update Channels",
+        "data": {
+          "prefix_channel": "Channel Prefix",
+          "channels": "Channels"
+        }
+      }
+    }
+  },
+  "device_automation": {}
+}

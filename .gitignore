@@ -4,11 +4,14 @@
 !*.yaml
 !.gitignore
 !*.md
-!blueprints
-!custom_components
-!custom_icons
-!themes
-!www
+!blueprints/
+!custom_components/
+!custom_icons/
+!dashboard/
+!image/
+!themes/
+!ui_lovelace_minimalist/
+!www/
 
 # Ignore folders.
 .storage
