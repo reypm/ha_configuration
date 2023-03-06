@@ -1,0 +1,107 @@
+title: Master Room
+path: master_bedroom
+icon: mdi:bed
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:mushroom-light-card
+    name: Light Switch
+    fill_container: true
+    show_brightness_control: true
+    collapsible_controls: true
+    secondary_info: last-changed
+    entity: light.master_bedroom
+    use_light_color: true
+    layout: horizontal
+
+  - type: custom:mushroom-fan-card
+    entity: fan.master_bedroom
+    name: Fan Switch
+    icon_animation: true
+    show_percentage_control: true
+    collapsible_controls: true
+    fill_container: true
+    secondary_info: last-changed
+    layout: horizontal
+
+  - type: custom:mushroom-light-card
+    name: Bathroom Dimmer
+    fill_container: true
+    show_brightness_control: true
+    collapsible_controls: true
+    secondary_info: last-changed
+    entity: light.bathroom_dimmer_hs220
+    layout: horizontal
+
+  - type: custom:mushroom-light-card
+    name: Bathroom Light
+    fill_container: true
+    show_brightness_control: true
+    collapsible_controls: true
+    secondary_info: last-changed
+    entity: switch.bathroom_light_hs200
+    use_light_color: true
+    layout: horizontal
+
+  - type: custom:vertical-stack-in-card
+    class: col-xs-12 col-md-3 col-xxl-3
+    title: EP25P4 Master Bedroom
+    cards:
+      - type: gauge
+        entity: sensor.laptop_smart_plug_office_current_consumption
+        name: Current Consumption
+        needle: false
+        severity:
+          green: 100
+          yellow: 500
+          red: 700
+      - type: glance
+        name: EP25P4 Living Room Smart Plug
+        entities:
+          - entity: sensor.laptop_smart_plug_office_current
+            name: Current
+          - entity: sensor.laptop_smart_plug_office_voltage
+            name: Voltage
+          - entity: sensor.laptop_smart_plug_office_total_consumption
+            name: Monthly Total
+
+  - type: custom:mini-media-player
+    class: col-xs-12 col-md-4 col-xxl-4
+    entity: media_player.atv_master_bedroom
+    name: Apple Tv 4K
+    artwork: full-cover
+    volume_stateless: true
+    source: icon
+    sound_mode: full
+    info: short
+    volume_step: 10
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+
+  - type: custom:mini-media-player
+    class: col-xs-12 col-md-4 col-xxl-4
+    entity: media_player.fire_tv_master_bedroom
+    name: Fire Tv
+    artwork: full-cover
+    volume_stateless: true
+    source: full
+    sound_mode: full
+    info: short
+    volume_step: 10
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+
+  - type: custom:mini-media-player
+    class: col-xs-12 col-md-4 col-xxl-4
+    name: LG webOS Smart Tv 55UQ9000PUD
+    entity: media_player.lg_tv_master_bedroom
+    source: icon
+    sound_mode: icon
+    info: short
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true

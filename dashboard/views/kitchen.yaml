@@ -1,0 +1,65 @@
+title: Kitchen
+path: kitchen
+icon: mdi:countertop
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:vertical-stack-in-card
+    title: Lights
+    cards:
+      - type: custom:mushroom-light-card
+        entity: light.kitchen_first_dimmer_hs220
+        name: Dimmer
+        fill_container: true
+        secondary_info: last-changed
+        show_brightness_control: true
+        collapsible_controls: true
+        use_light_color: true
+        layout: horizontal
+
+      - type: custom:mushroom-light-card
+        entity: light.kitchen_second_dimmer_hs220
+        name: Dimmer
+        fill_container: true
+        secondary_info: last-changed
+        show_brightness_control: true
+        collapsible_controls: true
+        use_light_color: true
+        layout: horizontal
+      - type: custom:mushroom-light-card
+        entity: switch.kitchen_light_hs210
+        name: Main Light
+        fill_container: true
+        secondary_info: last-changed
+        collapsible_controls: true
+        use_light_color: true
+        layout: horizontal
+
+      - type: custom:mushroom-light-card
+        entity: switch.patio_fan_light_switch_hs200
+        name: Patio Light/Fan Switch
+        fill_container: true
+        secondary_info: last-changed
+        collapsible_controls: true
+        use_light_color: true
+        layout: horizontal
+
+      - type: custom:mushroom-light-card
+        entity: switch.kitchen_second_light
+        name: Second Light
+        fill_container: true
+        secondary_info: last-changed
+        collapsible_controls: true
+        use_light_color: true
+        layout: horizontal
+
+      - type: custom:mini-media-player
+        entity: media_player.echo_kitchen
+        class: col-xs-6 col-md-4 col-xxl-4
+        name: Kitchen Echo
+        artwork: full-cover
+        tts:
+          platform: alexa
+          entity_id: media_player.echo_kitchen

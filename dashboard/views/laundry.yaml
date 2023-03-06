@@ -1,0 +1,67 @@
+title: Laundry
+path: laundry
+icon: mdi:washing-machine
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:vertical-stack-in-card
+    class: col-xs-12 col-md-4 col-xxl-4
+    title: LG Washer WT7900HBA
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.washer
+        fill_container: true
+        layout: horizontal
+        primary_info: name
+        secondary_info: state
+        icon_type: icon
+        tap_action:
+          action: more-info
+        double_tap_action:
+          action: none
+        hold_action:
+          action: none
+      - type: glance
+        entities:
+          - sensor.dryer_remaining_time
+          - sensor.washer_water_temp
+          - sensor.washer_spin_speed
+          - sensor.washer_rinse_mode
+          - sensor.washer_current_course
+
+  - type: custom:vertical-stack-in-card
+    class: col-xs-12 col-md-4 col-xxl-4
+    title: LG Dryer DLEX7900BE
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.dryer
+        name: LG Dryer
+        fill_container: true
+        layout: horizontal
+        icon_type: icon
+        primary_info: name
+        secondary_info: last-changed
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+      - type: glance
+        entities:
+          - sensor.washer_remaining_time
+          - sensor.dryer_temp_control
+          - sensor.dryer_current_course
+          - sensor.dryer_dry_level
+
+  - type: custom:mushroom-light-card
+    name: Laundry Motion Switch KS200M
+    class: col-xs-12 col-md-4 col-xxl-4
+    entity: switch.laundry_motion_switch_ks200m
+    use_light_color: true
+    collapsible_controls: true
+    fill_container: true
+    secondary_info: last-changed
+    layout: horizontal

@@ -1,0 +1,180 @@
+title: "Office"
+path: "office"
+icon: mdi:chair-rolling
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:mushroom-light-card
+    name: Light
+    entity: light.office
+    show_brightness_control: true
+    use_light_color: true
+    collapsible_controls: true
+    fill_container: true
+    secondary_info: last-changed
+    layout: horizontal
+
+  - type: custom:mushroom-fan-card
+    name: Fan
+    entity: fan.office
+    icon_animation: true
+    show_percentage_control: true
+    collapsible_controls: true
+    fill_container: true
+    secondary_info: last-changed
+    layout: horizontal
+
+  - type: custom:vertical-stack-in-card
+    class: col-xs-12 col-md-3 col-xxl-3
+    title: EP25P4 Office Network Devices
+    cards:
+      - type: gauge
+        entity: sensor.smart_plug_network_devices_current_consumption
+        name: Current Consumption
+        needle: false
+        severity:
+          green: 100
+          yellow: 500
+          red: 700
+      - type: glance
+        name: EP25P4 Living Room Smart Plug
+        entities:
+          - entity: sensor.smart_plug_network_devices_current
+            name: Current
+          - entity: sensor.smart_plug_network_devices_voltage
+            name: Voltage
+          - entity: sensor.smart_plug_network_devices_total_consumption
+            name: Monthly Total
+
+  - type: custom:vertical-stack-in-card
+    title: EP25P4 Office Devices
+    cards:
+      - type: gauge
+        entity: sensor.smart_plug_office_current_consumption
+        name: Current Consumption
+        needle: false
+        severity:
+          green: 100
+          yellow: 500
+          red: 700
+      - type: glance
+        name: EP25P4 Living Room Smart Plug
+        entities:
+          - entity: sensor.smart_plug_office_current
+            name: Current
+          - entity: sensor.smart_plug_office_voltage
+            name: Voltage
+          - entity: sensor.smart_plug_office_total_consumption
+            name: Monthly Total
+
+  - type: custom:vertical-stack-in-card
+    title: QNAP TS453-D
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.reypmnas_cpu_usage
+        name: CPU Usage
+        fill_container: true
+        icon_type: entity-picture
+      - type: custom:mushroom-entity-card
+        entity: sensor.reypmnas_memory_usage
+        fill_container: true
+        name: Memory Usage
+      - type: custom:mushroom-entity-card
+        entity: sensor.reypmnas_cpu_temperature
+        name: CPU Temperature
+      - type: custom:mini-graph-card
+        name: Network Status
+        icon: mdi:network
+        entities:
+          - entity: sensor.reypmnas_network_up_eth0
+            name: eth0 Up
+          - entity: sensor.reypmnas_network_down_eth0
+            name: eth0 Down
+          - entity: sensor.reypmnas_network_down_eth1
+            name: eth1 Up
+          - entity: sensor.reypmnas_network_up_eth1
+            name: eth1 Down
+
+  - type: custom:vertical-stack-in-card
+    title: Canon TR8600 Series
+    icon: mdi:nas
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.canon_tr8600_series
+        name: Canon TR8600 Series
+        fill_container: true
+        icon_color: |
+          {% if is_state('sensor.canon_tr8600_series', 'idle') %}
+            gray
+          {%elif is_state('sensor.canon_tr8600_series', 'printing') %}
+            red
+          {%else%}
+            black
+          {% endif %}
+      - type: custom:mushroom-entity-card
+        entity: sensor.canon_tr8600_series_black_bk
+        name: Black Ink Level
+        icon: mdi:water-check
+        icon_color: black
+        fill_container: true
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-entity-card
+        entity: sensor.canon_tr8600_series_black_pgbk
+        name: Black PGBK Ink Level
+        icon: mdi:water-check
+        icon_color: black
+        fill_container: true
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-entity-card
+        entity: sensor.canon_tr8600_series_cyan
+        name: Cyan Ink Level
+        icon: mdi:water-check
+        icon_color: cyan
+        fill_container: true
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-entity-card
+        entity: sensor.canon_tr8600_series_magenta
+        name: Magenta Ink Level
+        icon: mdi:water-check
+        icon_color: '#FF00FF'
+        fill_container: true
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-entity-card
+        entity: sensor.canon_tr8600_series_yellow
+        name: Yellow Ink Level
+        icon: mdi:water-check
+        icon_color: yellow
+        fill_container: true
+        tap_action:
+          action: more-info
+
+  - type: custom:mini-media-player
+    entity: media_player.echo_office
+    class: col-xs-6 col-md-4 col-xxl-4
+    name: Office Echo
+    artwork: cover
+    source: icon
+    sound_mode: icon
+    info: scroll
+    volume_stateless: true
+    volume_step: 10
+    replace_mute: play_pause
+    tts:
+      platform: alexa
+      entity_id: media_player.echo_office
+
+  - type: conditional
+    conditions:
+     - entity: binary_sensor.backups_stale
+       state_not: "off"
+    card:
+     type: markdown
+     content: >-
+       Backups are stale! Please visit the "Home Assistant Google Drive Backup" add-on status page for details.
+     title: Stale Backups!`

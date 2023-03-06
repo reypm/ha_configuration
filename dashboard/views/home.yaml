@@ -1,0 +1,289 @@
+title: Home
+path: home_view
+icon: mdi:home
+badges: []
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:minimalistic-area-card
+    title: Home
+    area: home
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/home_view
+    entities:
+      - lock.front_door
+      - climate.home
+  - type: custom:minimalistic-area-card
+    title: Office
+    area: office
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/office
+    entities:
+      - fan.office
+      - light.office
+    card_mod:
+      style: |
+        ha-svg-icon$: | {
+          color: red;
+          }
+  - type: custom:minimalistic-area-card
+    title: Master Room
+    area: master_bedroom
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/master_bedroom
+    entities:
+      - fan.master_bedroom
+      - light.master_bedroom
+      - media_player.lg_tv_master_bedroom
+      - media_player.atv_master_bedroom
+      - media_player.master_bedroom_firetv
+  - type: custom:minimalistic-area-card
+    title: Kid Room
+    area: kid_bedroom
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/kid_room
+    entities:
+      - fan.kid_bedroom
+      - light.kid_bedroom
+      - media_player.atv_kid_bedroom
+      - media_player.tv_kid_bedroom
+      - media_player.fire_hd_10_kid
+  - type: custom:minimalistic-area-card
+    title: Living Room
+    area: living_room
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/living_room
+    entities:
+      - fan.living_room
+      - light.living_room
+      - media_player.atv_living_room
+      - media_player.lg_tv_living_room
+      - media_player.lg_speaker_sp9ya
+      - light.rgbic_tv_backlight
+  - type: custom:minimalistic-area-card
+    title: Kitchen
+    area: kitchen
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/kitchen
+    entities:
+      - switch.kitchen_light_hs210
+      - light.kitchen_first_dimmer_hs220
+      - light.kitchen_second_dimmer_hs220
+      - switch.kitchen_second_light
+  - type: custom:minimalistic-area-card
+    title: Dinning Room
+    area: dining_room
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/dinning_room
+    entities:
+      - switch.dining_room_light_hs200
+      - siren.dinning_room_siren
+  - type: custom:minimalistic-area-card
+    title: Laundry
+    area: laundry
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/laundry
+    entities:
+      - switch.dryer_power
+      - switch.washer_power
+      - switch.laundry_motion_switch_ks200m
+  - type: custom:minimalistic-area-card
+    title: Garage
+    area: garage
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/garage
+    entities:
+      - cover.garage_door
+      - switch.garage_motion_switch_ks200m
+  - type: custom:minimalistic-area-card
+    title: Guest Room
+    area: guest_room
+    tap_action:
+      action: navigate
+      navigation_path: /home-dashboard/guest_room
+    entities:
+      - fan.guest_room
+      - light.guest_room
+
+  - type: custom:mushroom-person-card
+    entity: person.reynier_perez
+    name: Reynier Perez
+    fill_container: true
+
+  - type: custom:mushroom-template-card
+    primary: Front Door Lock
+    secondary: |-
+      {% set state=states(entity) %}
+      {% if state=='locked' %}
+      Closed
+      {% elif state=='unlocked' %}
+      Open
+      {% else %}
+      Error
+      {% endif %}
+    icon: |-
+      {% set state=states(entity) %}
+      {% if state=='locked' %}
+      mdi:lock
+      {% elif state=='unlocked' %}
+      mdi:lock-open-alert
+      {% else %}
+      mdi:alert
+      {% endif %}
+    entity: lock.front_door
+    icon_color: |-
+      {% set state=states(entity) %}
+      {% if state=='locked' %}
+      green
+      {% elif state=='unlocked' %}
+      red
+      {% else %}
+      grey
+      {% endif %}
+    tap_action:
+      action: toggle
+
+  - type: custom:mushroom-template-card
+    class: col-xs-4 col-md-2 col-xxl-2
+    primary: Garage Door
+    secondary: |-
+      {% set state=states(entity) %}
+      {% if state=='closed' %}
+      Closed
+      {% elif state=='open' %}
+      Open
+      {% else %}
+      Error
+      {% endif %}
+    icon: |-
+      {% set state=states(entity) %}
+      {% if state=='closed' %}
+      mdi:garage-variant
+      {% elif state=='open' %}
+      mdi:garage-open-variant-alert
+      {% else %}
+      mdi:alert
+      {% endif %}
+    entity: cover.garage_door
+    icon_color: |-
+      {% set state=states(entity) %}
+      {% if state=='closed' %}
+      green
+      {% elif state=='open' %}
+      red
+      {% else %}
+      grey
+      {% endif %}
+    tap_action:
+      action: toggle
+
+  - type: custom:vertical-stack-in-card
+    title: Lights
+    cards:
+      - type: custom:mushroom-light-card
+        entity: switch.garage_motion_switch_ks200m
+        name: Garage Light
+        icon: mdi:lightbulb
+        fill_container: true
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: switch.outside_lights_hs200
+        name: Outside Lights
+        icon: mdi:lightbulb
+        fill_container: true
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: switch.porch_lights_hs200
+        name: Porch Light
+        icon: mdi:lightbulb
+        fill_container: true
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: switch.enttrance_light_hs200
+        icon: mdi:lightbulb
+        name: Entrance Light
+        fill_container: true
+        use_light_color: true
+    card_mod:
+      style:
+        ha-card$: |
+          .card-header {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800
+            color: blue
+          }
+
+  - type: custom:vertical-stack-in-card
+    title: Batteries Level
+    cards:
+      - type: custom:battery-entity-row
+        entity: sensor.front_door_lock_battery
+        name: Yale Assure Lock 2
+      - type: custom:battery-entity-row
+        entity: sensor.front_doorbell_ring_battery
+        name: Ring Video Doorbell 3
+
+  - type: custom:weather-card
+    entity: weather.forecast_home
+    number_of_forecasts: '5'
+
+  - type: custom:sun-card
+    showElevation: true
+
+  - type: custom:simple-thermostat
+    entity: climate.home
+    layout:
+      step: row
+    header: false
+#    header:
+#      name: Overriden name
+#      icon: mdi:sofa
+#      toggle:
+#        entity: switch.light
+#        name: Light
+#      faults:
+#        - entity: switch.light
+    control:
+      - hvac
+      - preset
+
+  - type: custom:mushroom-template-card
+    icon: mdi:calendar-end
+    primary: Month End Countdown
+    icon_color: orange
+    secondary: >
+      {% set month_days = (31 if now().month == 12 else
+      (now().replace(month=now().month+1, day=1) - timedelta(days=1)).day) %}
+
+      {{ now().day }}/{{ month_days }} Days | {{ ((month_days - now().day) /
+      month_days * 100) | round(2) }}%
+    card_mod:
+      style:
+        mushroom-shape-icon$: |
+          .shape {
+            {% set month_days = (31 if now().month == 12 else (now().replace(month=now().month+1, day=1) - timedelta(days=1)).day) %}
+
+            background: radial-gradient(var(--card-background-color) 60%, transparent calc(60% + 1px)), 
+                        conic-gradient(rgb(var(--rgb-{{ config.icon_color }})) 
+                        {{ ((month_days - now().day) / month_days * 100) | round(2) }}% 0%, 
+                        var(--card-background-color) 0% 100%);
+          }
+          .shape:after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border-radius: var(--icon-border-radius);
+            background: rgba(var(--rgb-{{ config.icon_color }}), 0.2);
+          }

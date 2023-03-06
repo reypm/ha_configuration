@@ -1,0 +1,82 @@
+title: Kid Room
+path: kid_room
+icon: mdi:teddy-bear
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:mushroom-light-card
+    entity: switch.walking_closet_switch
+    name: Walking Closet Light
+    fill_container: true
+    collapsible_controls: true
+    secondary_info: last-changed
+    layout: horizontal
+
+  - type: custom:mushroom-light-card
+    entity: light.kid_bedroom
+    name: Light Switch
+    fill_container: true
+    collapsible_controls: true
+    secondary_info: last-changed
+    layout: horizontal
+
+  - type: custom:mushroom-fan-card
+    entity: fan.kid_bedroom
+    name: Fan Switch
+    icon_animation: true
+    show_percentage_control: true
+    collapsible_controls: true
+    fill_container: true
+    secondary_info: last-changed
+    layout: horizontal
+
+  - type: custom:mini-media-player
+    entity: media_player.atv_kid_bedroom
+    name: Apple Tv 4K
+    artwork: full-cover
+    volume_stateless: true
+    source: icon
+    sound_mode: full
+    info: short
+    volume_step: 10
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+
+  - type: custom:mini-media-player
+    name: Samsung 5 Series (40) [UN40N5200AFXZA]
+    entity: media_player.tv_kid_bedroom
+    source: icon
+    sound_mode: icon
+    info: short
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+
+  - type: picture-entity
+    entity: light.kid_bedroom
+    camera_image: camera.maxi_room_hd_stream
+    camera_view: live
+
+  - type: custom:mini-media-player
+    entity: media_player.kid_echo
+    name: Kid Echo
+    artwork: full-cover
+    tts:
+      platform: alexa
+      entity_id: media_player.kid_echo
+
+  - type: custom:mushroom-media-player-card
+    entity: media_player.atv_kid_bedroom
+    icon_type: none
+    primary_info: none
+    secondary_info: none
+    volume_controls:
+      - volume_set
+    card_mod:
+      style: |
+        :host {
+          --mush-rgb-state-media-player: var(--rgb-green);
+        }

@@ -1,0 +1,101 @@
+title: Living Room
+path: living_room
+icon: mdi:youtube-tv
+type: custom:horizontal-layout
+layout:
+  width: 300
+  max_cols: 5
+cards:
+  - type: custom:mushroom-light-card
+    class: col-xs-6 col-md-2 col-xxl-2
+    name: Light Switch
+    entity: light.living_room
+    fill_container: true
+    use_light_color: true
+    show_brightness_control: true
+    collapsible_controls: true
+  - type: custom:mushroom-fan-card
+    class: col-xs-6 col-md-2 col-xxl-2
+    entity: fan.living_room
+    name: Fan Switch
+    icon_animation: true
+    show_percentage_control: true
+    collapsible_controls: true
+    fill_container: true
+    secondary_info: last-changed
+  - type: custom:mushroom-light-card
+    entity: light.rgbic_tv_backlight
+    class: col-xs-6 col-md-3 col-xxl-3
+    name: Tv Backlight H605C
+    show_color_control: true
+    fill_container: true
+    layout: horizontal
+  - type: custom:vertical-stack-in-card
+    class: col-xs-6 col-md-4 col-xxl-4
+    title: EP25P4 Living Room
+    cards:
+      - type: gauge
+        entity: sensor.smart_plug_living_room_current_consumption
+        name: Current Consumption
+        needle: false
+        severity:
+          green: 100
+          yellow: 500
+          red: 700
+      - type: glance
+        name: EP25P4 Living Room Smart Plug
+        entities:
+          - entity: sensor.smart_plug_living_room_today_consumption
+            name: Today's
+          - entity: sensor.smart_plug_living_room_total_consumption
+            name: Monthly Total
+          - entity: sensor.smart_plug_living_room_current_amp
+            name: Amperage
+          - entity: sensor.smart_plug_living_room_voltage
+            name: Voltage
+  - type: custom:mini-media-player
+    entity: media_player.atv_living_room
+    class: col-xs-6 col-md-4 col-xxl-4
+    name: Apple Tv 4K
+    artwork: full-cover
+    volume_stateless: true
+    source: icon
+    sound_mode: full
+    info: short
+    volume_step: 10
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+  - type: custom:mini-media-player
+    entity: media_player.fire_tv_living_room
+    class: col-xs-6 col-md-4 col-xxl-4
+    name: FireTv 4K
+    artwork: full-cover
+    volume_stateless: true
+    source: icon
+    sound_mode: full
+    info: short
+    volume_step: 10
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+  - type: custom:mini-media-player
+    entity: media_player.lg_tv_living_room
+    class: col-xs-6 col-md-4 col-xxl-4
+    name: LG Tv OLED77C1PUB
+    source: icon
+    sound_mode: icon
+    info: short
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
+  - type: custom:mini-media-player
+    entity: media_player.lg_soundbar_sp9ya
+    class: col-xs-6 col-md-4 col-xxl-4
+    name: LG Soundbar SP9YA
+    source: icon
+    sound_mode: icon
+    info: short
+    max_volume: 100
+    min_volume: 10
+    toggle_power: true
