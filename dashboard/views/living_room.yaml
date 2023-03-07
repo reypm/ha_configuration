@@ -7,7 +7,6 @@ layout:
   max_cols: 5
 cards:
   - type: custom:mushroom-light-card
-    class: col-xs-6 col-md-2 col-xxl-2
     name: Light Switch
     entity: light.living_room
     fill_container: true
@@ -15,7 +14,6 @@ cards:
     show_brightness_control: true
     collapsible_controls: true
   - type: custom:mushroom-fan-card
-    class: col-xs-6 col-md-2 col-xxl-2
     entity: fan.living_room
     name: Fan Switch
     icon_animation: true
@@ -25,13 +23,11 @@ cards:
     secondary_info: last-changed
   - type: custom:mushroom-light-card
     entity: light.rgbic_tv_backlight
-    class: col-xs-6 col-md-3 col-xxl-3
     name: Tv Backlight H605C
     show_color_control: true
     fill_container: true
     layout: horizontal
   - type: custom:vertical-stack-in-card
-    class: col-xs-6 col-md-4 col-xxl-4
     title: EP25P4 Living Room
     cards:
       - type: gauge
@@ -55,7 +51,6 @@ cards:
             name: Voltage
   - type: custom:mini-media-player
     entity: media_player.atv_living_room
-    class: col-xs-6 col-md-4 col-xxl-4
     name: Apple Tv 4K
     artwork: full-cover
     volume_stateless: true
@@ -68,7 +63,6 @@ cards:
     toggle_power: true
   - type: custom:mini-media-player
     entity: media_player.fire_tv_living_room
-    class: col-xs-6 col-md-4 col-xxl-4
     name: FireTv 4K
     artwork: full-cover
     volume_stateless: true
@@ -81,7 +75,6 @@ cards:
     toggle_power: true
   - type: custom:mini-media-player
     entity: media_player.lg_tv_living_room
-    class: col-xs-6 col-md-4 col-xxl-4
     name: LG Tv OLED77C1PUB
     source: icon
     sound_mode: icon
@@ -91,7 +84,6 @@ cards:
     toggle_power: true
   - type: custom:mini-media-player
     entity: media_player.lg_soundbar_sp9ya
-    class: col-xs-6 col-md-4 col-xxl-4
     name: LG Soundbar SP9YA
     source: icon
     sound_mode: icon

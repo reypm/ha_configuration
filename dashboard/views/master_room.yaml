@@ -46,7 +46,6 @@ cards:
     layout: horizontal
 
   - type: custom:vertical-stack-in-card
-    class: col-xs-12 col-md-3 col-xxl-3
     title: EP25P4 Master Bedroom
     cards:
       - type: gauge
@@ -68,7 +67,6 @@ cards:
             name: Monthly Total
 
   - type: custom:mini-media-player
-    class: col-xs-12 col-md-4 col-xxl-4
     entity: media_player.atv_master_bedroom
     name: Apple Tv 4K
     artwork: full-cover
@@ -82,7 +80,6 @@ cards:
     toggle_power: true
 
   - type: custom:mini-media-player
-    class: col-xs-12 col-md-4 col-xxl-4
     entity: media_player.fire_tv_master_bedroom
     name: Fire Tv
     artwork: full-cover
@@ -96,7 +93,6 @@ cards:
     toggle_power: true
 
   - type: custom:mini-media-player
-    class: col-xs-12 col-md-4 col-xxl-4
     name: LG webOS Smart Tv 55UQ9000PUD
     entity: media_player.lg_tv_master_bedroom
     source: icon

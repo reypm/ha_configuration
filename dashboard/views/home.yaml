@@ -27,9 +27,9 @@ cards:
       - light.office
     card_mod:
       style: |
-        ha-svg-icon$: | {
+        ha-icon-button$: | {
           color: red;
-          }
+        }
   - type: custom:minimalistic-area-card
     title: Master Room
     area: master_bedroom
@@ -155,7 +155,6 @@ cards:
       action: toggle
 
   - type: custom:mushroom-template-card
-    class: col-xs-4 col-md-2 col-xxl-2
     primary: Garage Door
     secondary: |-
       {% set state=states(entity) %}

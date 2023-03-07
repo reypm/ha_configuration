@@ -27,7 +27,6 @@ cards:
     layout: horizontal
 
   - type: custom:vertical-stack-in-card
-    class: col-xs-12 col-md-3 col-xxl-3
     title: EP25P4 Office Network Devices
     cards:
       - type: gauge
@@ -156,7 +155,6 @@ cards:
 
   - type: custom:mini-media-player
     entity: media_player.echo_office
-    class: col-xs-6 col-md-4 col-xxl-4
     name: Office Echo
     artwork: cover
     source: icon
