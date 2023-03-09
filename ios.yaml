@@ -2,35 +2,39 @@ actions:
   - name: StartWorkDay
     background_color: "#000000"
     label:
-      text: "Start Work"
+      text: "Office On"
       color: "#ff0000"
     icon:
       icon: mdi:clock-start
       color: "#ffffff"
+
   - name: EndWorkDay
     background_color: "#000000"
     label:
-      text: "End Work"
+      text: "Office Off"
       color: "#ff0000"
     icon:
       icon: mdi:check-all
       color: "#ffffff"
+
   - name: HvacOn
     background_color: "#000000"
     label:
-      text: "Turn On HVAC"
+      text: "AC On"
       color: "#ff0000"
     icon:
       icon: mdi:hvac
       color: "#ffffff"
+
   - name: HvacOff
     background_color: "#000000"
     label:
-      text: "Turn Off HVAC"
+      text: "AC Off"
       color: "#ff0000"
     icon:
       icon: mdi:hvac-off
       color: "#ffffff"
+
   - name: BedTime
     background_color: "#000000"
     label:
@@ -39,15 +43,17 @@ actions:
     icon:
       icon: mdi:power-sleep
       color: "#ffffff"
+
   - name: KidBedTime
     background_color: "#000000"
     label:
-      text: "Kid Room Off"
+      text: "KidRoom Off"
       color: "#ff0000"
     icon:
       icon: mdi:clock-end
       color: "#ffffff"
-  - name: MovieTime
+
+  - name: MovieTimeLivingRoom
     background_color: "#000000"
     label:
       text: "Movie Time"
@@ -55,13 +61,32 @@ actions:
     icon:
       icon: mdi:movie-play
       color: "#ffffff"
+
+  - name: MovieTimeLivingRoomOff
+    background_color: "#000000"
+    label:
+      text: "Movie Off"
+      color: "#ff0000"
+    icon:
+      icon: mdi:television-off
+      color: "#ffffff"
+
   - name: BedroomMovieTime
     background_color: "#000000"
     label:
-      text: "Bedroom Movie Time"
+      text: "Bedroom Time"
       color: "#ff0000"
     icon:
       icon: mdi:youtube-tv
+      color: "#ffffff"
+
+  - name: BedroomMovieTimeOff
+    background_color: "#000000"
+    label:
+      text: "Bedroom Off"
+      color: "#ff0000"
+    icon:
+      icon: mdi:television-off
       color: "#ffffff"
 
 

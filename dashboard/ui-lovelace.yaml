@@ -1,4 +1,6 @@
 title: Home
+#background: var(--background-image)
+background: 'center / cover no-repeat url("/local/backgrounds/macos-ventura-light.webp") fixed'
 views:
   - !include views/home.yaml
   - !include views/office.yaml
@@ -10,3 +12,4 @@ views:
   - !include views/laundry.yaml
   - !include views/garage.yaml
   - !include views/guest_room.yaml
+  - !include views/cameras.yaml

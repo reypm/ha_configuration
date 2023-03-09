@@ -81,8 +81,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 ios: !include ios.yaml
-
-# Others
+template: !include template.yaml
 sensor: !include sensors.yaml
 
 # Logger
