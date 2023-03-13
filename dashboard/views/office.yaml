@@ -173,6 +173,16 @@ cards:
        state_not: "off"
     card:
      type: markdown
-     content: >-
-       Backups are stale! Please visit the "Home Assistant Google Drive Backup" add-on status page for details.
-     title: Stale Backups!`
+     content: Backups are stale! Please visit the "Home Assistant Google Drive Backup" add-on status page for details.
+     title: Stale Backups!
+
+  - type: custom:mini-graph-card
+    name: Network Status
+    icon: mdi:network
+    entities:
+      - entity: sensor.speedtest_download
+        name: Download Speed
+      - entity: sensor.speedtest_upload
+        name: Upload Speed
+      - entity: sensor.speedtest_ping
+        name: Ping

@@ -74,7 +74,7 @@ actions:
   - name: BedroomMovieTime
     background_color: "#000000"
     label:
-      text: "Bedroom Time"
+      text: "Bedroom Movie Time"
       color: "#ff0000"
     icon:
       icon: mdi:youtube-tv
@@ -83,12 +83,8 @@ actions:
   - name: BedroomMovieTimeOff
     background_color: "#000000"
     label:
-      text: "Bedroom Off"
+      text: "Bedroom Movie Off"
       color: "#ff0000"
     icon:
       icon: mdi:television-off
       color: "#ffffff"
-
-
-
-
